@@ -1,31 +1,31 @@
 #include "image.h"
 
 Image::Image(string titre, string categorie, string chemin):
-    m_titre(titre),
-    m_categorie(categorie),
-    m_chemin(chemin)
+    titre(titre),
+    categorie(categorie),
+    chemin(chemin)
 {}
 
 void Image::creerImage(string titre, string categorie, string chemin)
 {
-    this->m_titre = titre;
-    this->m_categorie = categorie;
-    this->m_chemin = chemin;
+    this->titre = titre;
+    this->categorie = categorie;
+    this->chemin = chemin;
 }
 
 string Image::getCategorie() const
 {
-    return this->m_categorie;
+    return this->categorie;
 }
 
 string Image::getTitre() const
 {
-    return this->m_titre;
+    return this->titre;
 }
 
 string Image::getChemin() const
 {
-    return this->m_chemin;
+    return this->chemin;
 }
 
 void Image::afficher() const

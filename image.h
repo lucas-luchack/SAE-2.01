@@ -15,9 +15,9 @@ public:
     Image(string = "", string = "", string = "");
 
 private:
-    string m_titre;
-    string m_categorie;
-    string m_chemin;
+    string titre;
+    string categorie;
+    string chemin;
 
 protected:
     void creerImage(string = "", string = "", string = "");

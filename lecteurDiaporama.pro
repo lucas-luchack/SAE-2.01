@@ -6,14 +6,15 @@ CONFIG -= qt
 SOURCES += \
         diaporama.cpp \
         image.cpp \
+        lecteur.cpp \
         main.cpp \
         sousProgrammes.cpp
 
 HEADERS += \
     diaporama.h \
     image.h \
-    sousProgrammes.h \
-    typeDiaporama.h
+    lecteur.h \
+    sousProgrammes.h
 
 DISTFILES += \
     .gitignore

@@ -15,6 +15,7 @@ public:
 private:
     ModeLecteur mode;
     unsigned int numDiaporama;
+    Diaporamas *diaporamas;
 
 };
 

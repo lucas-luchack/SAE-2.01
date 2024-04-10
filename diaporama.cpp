@@ -6,9 +6,30 @@ Diaporama::Diaporama(string titre, unsigned int vitesseDefilement):
     numImageCourante(0)
 {}
 
-void Diaporama::triCroissantRang()
+Diaporama::~Diaporama()
 {
 
+}
+
+void Diaporama::triCroissantRang()
+{
+    unsigned int taille = this->nbImages();
+    ImageDansDiaporama imageDansDiapo;
+    for (unsigned int ici = taille-1; ici >=1 ; ici--)
+    {
+        // faire monter la bulle ici = déplacer l'élément de rang le plus grand en position ici
+        // par échanges successifs
+        for (unsigned int i = 0; i < ici; i++)
+        {
+            if (this->images[i].rang > this->images[i+1].rang)
+            {
+                // echanger les 2 éléments
+                imageDansDiapo = this->images[i];
+                this->images[i] = this->images[i+1];
+                this->images[i+1] = imageDansDiapo;
+            }
+        }
+    }
 }
 
 void Diaporama::avancer()
@@ -38,4 +59,13 @@ void Diaporama::reculer()
 unsigned int Diaporama::nbImages() const
 {
     return this->images.size();
+}
+
+void Diaporama::ajouterImage(Image *image, unsigned int rang)
+{
+    ImageDansDiaporama imgDansDiapo;
+    imgDansDiapo.image = image;
+    imgDansDiapo.rang = rang;
+
+    this->images.push_back(imgDansDiapo);
 }

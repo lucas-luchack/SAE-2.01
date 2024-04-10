@@ -39,17 +39,4 @@ void charger (Diaporamas& pDiaporamas);
    d'une base de données.
 */
 
-
-/* Déclarations des sous-programmes utilisés par le lecteur de diaporamas
- * ---------------------------------------------------------------------- */
-
-void avancer(const Diaporama& pDiaporama, unsigned int& pPosImageCourante);            // incrémente pPosImageCourante, modulo nbImages(pDiaporama)
-void reculer(const Diaporama& pDiaporama, unsigned int& pPosImageCourante);             // décrémente pPosImageCourante, modulo nbImages(pDiaporama)
-void changerDiaporama(unsigned int pNumDiaporama);    // permet de choisir un diaporama, 0 si aucun diaporama souhaité
-unsigned int nbImages(const Diaporama& pDiaporama);    // affiche la taille du diaporama pDiaporama
-
-void triCroissantRang (Diaporama& pDiaporama);
-/* Tri du diaporama pDiaporama par ordre croissant de *rang* des ses images
-   A garder aussi lors de l'implémentation de la BD */
-
 #endif // SOUS_PROGRAMMES_POUR_VERSIONS_INITIALES_H

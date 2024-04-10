@@ -6,8 +6,8 @@
 #include <vector>
 
 struct ImageDansDiaporama {
-    unsigned int pos;  // rang de l'image dans le tableau d'images (vector<Images>)
-                       // = ordre de chargement initial des images dans la table des images
+    Image *image;       // rang de l'image dans le tableau d'images (vector<Images>)
+                        // = ordre de chargement initial des images dans la table des images
     unsigned int rang;  // rang de l'image dans le diaporama
                         // = ordre d'affichage choisi par l'utilisateur lors de la création du diaporama
 };
@@ -31,6 +31,7 @@ protected:
     void avancer();
     void reculer();
     unsigned int nbImages() const;
+    void ajouterImage(Image*, unsigned int);
 
 };
 

@@ -4,7 +4,6 @@
 #include <iostream>
 #include <image.h>
 #include <vector>
-#include "typeDiaporama.h"
 
 struct ImageDansDiaporama {
     unsigned int pos;  // rang de l'image dans le tableau d'images (vector<Images>)
@@ -22,10 +21,10 @@ public:
     ~Diaporama();
 
 private:
-    std::string m_titre;
-    unsigned int m_vitesseDefilement;
-    unsigned int m_numImageCourante;
-    ImagesDansDiaporama m_images;
+    std::string titre;
+    unsigned int vitesseDefilement;
+    unsigned int numImageCourante;
+    ImagesDansDiaporama images;
 
 protected:
     void triCroissantRang();

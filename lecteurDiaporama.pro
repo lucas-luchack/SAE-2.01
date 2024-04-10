@@ -14,3 +14,6 @@ HEADERS += \
     image.h \
     sousProgrammes.h \
     typeDiaporama.h
+
+DISTFILES += \
+    .gitignore

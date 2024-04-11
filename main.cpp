@@ -1,7 +1,8 @@
 #include <iostream>
 #include <vector>
 #include "image.h"
-#include "typeDiaporama.h"
+#include "diaporama.h"
+#include "lecteur.h"
 #include "sousProgrammes.h"
 using namespace std;
 
@@ -15,6 +16,7 @@ int main()
      --------------------------------------------------------------------------------------*/
     Images images;          // les images
     Diaporamas diaporamas;  // les diaporamas
+    Lecteur lecteur;
 
     // Chargement des urls des images, chargement des diaporamas
     charger(images);
@@ -26,7 +28,7 @@ int main()
     // Tri des images contenues dans les diaporamas pour les placer dans l'ordre d'apparition (rang) souhaité par l'utilisateur
     for (unsigned int posDiapo = 0; posDiapo < taille_diaporamas; posDiapo++)
     {
-        triCroissantRang(diaporamas[posDiapo]);
+        diaporamas[posDiapo]->triCroissantRang();
     }
 
 

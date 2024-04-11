@@ -6,11 +6,9 @@ Image::Image(string titre, string categorie, string chemin):
     chemin(chemin)
 {}
 
-void Image::creerImage(string titre, string categorie, string chemin)
+Image::~Image()
 {
-    this->titre = titre;
-    this->categorie = categorie;
-    this->chemin = chemin;
+
 }
 
 string Image::getCategorie() const

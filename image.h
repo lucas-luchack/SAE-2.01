@@ -13,21 +13,20 @@ class Image
 
 public:
     Image(string = "", string = "", string = "");
+    ~Image();
+
+    string getTitre() const;
+    string getCategorie() const;
+    string getChemin() const;
+    void afficher() const;
 
 private:
     string titre;
     string categorie;
     string chemin;
 
-protected:
-    void creerImage(string = "", string = "", string = "");
-    string getTitre() const;
-    string getCategorie() const;
-    string getChemin() const;
-    void afficher() const;
-
 };
 
-typedef vector<Image> Images;
+typedef vector<Image*> Images;
 
 #endif // IMAGE_H

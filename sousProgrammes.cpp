@@ -2,7 +2,6 @@
 #include <iostream>
 #include <vector>
 #include "image.h"
-#include "typeDiaporama.h"
 using namespace std;
 
 
@@ -71,7 +70,7 @@ void declencherAction(char pChoixAction, const Diaporamas& pDiaporamas, unsigned
             afficherImageCouranteDansDiaporamaCourant (pDiaporamas[pDiaporamaCourant], pImageCourante, pImages[position]);
             break;
         case 'R':
-            reculer(pDiaporamas[pDiaporamaCourant], pImageCourante);
+            pDiaporamas[pDiaporamaCourant].reculer();
             position = pDiaporamas[pDiaporamaCourant].localisationImages[pImageCourante].pos;
             afficherImageCouranteDansDiaporamaCourant (pDiaporamas[pDiaporamaCourant], pImageCourante, pImages[position]);
             break;
@@ -198,53 +197,26 @@ void charger(Diaporamas& pDiaporamas)
 }
 void charger (Images& pImages) {
     Image imageACharger;
-    imageACharger = creerImage ("objet", "", "C:\\cartesDisney\\Disney_tapis.gif");
+    imageACharger = Image("objet", "", "C:\\cartesDisney\\Disney_tapis.gif");
     pImages.push_back(imageACharger);
-    imageACharger = creerImage ("personnage", "Blanche Neige", "C:\\cartesDisney\\Disney_4.gif");
+    imageACharger = Image("personnage", "Blanche Neige", "C:\\cartesDisney\\Disney_4.gif");
     pImages.push_back(imageACharger);
-    imageACharger = creerImage ("personnage", "Alice", "C:\\cartesDisney\\Disney_2.gif");
+    imageACharger = Image("personnage", "Alice", "C:\\cartesDisney\\Disney_2.gif");
     pImages.push_back(imageACharger);
-    imageACharger = creerImage ("animal", "Mickey", "C:\\cartesDisney\\Disney_19.gif");
+    imageACharger = Image("animal", "Mickey", "C:\\cartesDisney\\Disney_19.gif");
     pImages.push_back(imageACharger);
-    imageACharger = creerImage ("personnage", "Pinnochio", "C:\\cartesDisney\\Disney_29.gif");
+    imageACharger = Image("personnage", "Pinnochio", "C:\\cartesDisney\\Disney_29.gif");
     pImages.push_back(imageACharger);
-    imageACharger = creerImage ("objet", "chateau", "C:\\cartesDisney\\Disney_0.gif");
+    imageACharger = Image("objet", "chateau", "C:\\cartesDisney\\Disney_0.gif");
     pImages.push_back(imageACharger);
-    imageACharger = creerImage ("personnage", "Minnie", "C:\\cartesDisney\\Disney_14.gif");
+    imageACharger = Image("personnage", "Minnie", "C:\\cartesDisney\\Disney_14.gif");
     pImages.push_back(imageACharger);
-    imageACharger = creerImage ("animal", "Bambi", "C:\\cartesDisney\\Disney_3.gif");
+    imageACharger = Image("animal", "Bambi", "C:\\cartesDisney\\Disney_3.gif");
     pImages.push_back(imageACharger);
 }
 
 /* Corps des sous-programmes utilisés par la fonction main()
  * ------------------------------------------------------- */
-void avancer(const Diaporama& pDiaporama, unsigned int& pPosImageCourante)
-// avance à l'image suivante de l'image courante. Revient à l'image de rang 1 si terminé
-{
-    if (pPosImageCourante == pDiaporama.localisationImages.size() - 1)
-    {
-        pPosImageCourante = 0;
-    }
-    else {
-        pPosImageCourante = pPosImageCourante + 1;
-    }
-}
-void reculer(const Diaporama& pDiaporama, unsigned int& pPosImageCourante)
-{
-    if (pPosImageCourante == 0)
-    {
-        pPosImageCourante = pDiaporama.localisationImages.size() - 1;
-    }
-    else {
-        pPosImageCourante = pPosImageCourante - 1;
-    }
-}
-
-unsigned int nbImages(const Diaporama& pDiaporama)
-{
-    return pDiaporama.localisationImages.size();
-}
-
 
 void triCroissantRang (Diaporama &pDiaporama)
 {   // par la méthode du triBulle

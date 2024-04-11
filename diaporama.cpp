@@ -61,6 +61,16 @@ unsigned int Diaporama::nbImages() const
     return this->images.size();
 }
 
+ImagesDansDiaporama Diaporama::getImages() const
+{
+    return this->images;
+}
+
+ImageDansDiaporama Diaporama::getImage() const
+{
+    return this->images[this->numImageCourante];
+}
+
 void Diaporama::ajouterImage(Image *image, unsigned int rang)
 {
     ImageDansDiaporama imgDansDiapo;

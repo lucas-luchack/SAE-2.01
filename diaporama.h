@@ -20,21 +20,23 @@ public:
     Diaporama(string, unsigned int = 1000);
     ~Diaporama();
 
+    void triCroissantRang();
+    void ajouterImage(Image*, unsigned int);
+    void avancer();
+    void reculer();
+    unsigned int nbImages() const;
+
+    ImagesDansDiaporama getImages() const;
+    ImageDansDiaporama getImage() const;
+
 private:
     std::string titre;
     unsigned int vitesseDefilement;
     unsigned int numImageCourante;
     ImagesDansDiaporama images;
 
-protected:
-    void triCroissantRang();
-    void avancer();
-    void reculer();
-    unsigned int nbImages() const;
-    void ajouterImage(Image*, unsigned int);
-
 };
 
-typedef vector<Diaporama> Diaporamas;
+typedef vector<Diaporama*> Diaporamas;
 
 #endif // DIAPORAMA_H

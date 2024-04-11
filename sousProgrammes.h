@@ -1,9 +1,13 @@
 #ifndef SOUS_PROGRAMMES_POUR_VERSIONS_INITIALES_H
 #define SOUS_PROGRAMMES_POUR_VERSIONS_INITIALES_H
+
 #include <iostream>
 #include <vector>
+
 #include "image.h"
-#include "typeDiaporama.h"
+#include "diaporama.h"
+#include "lecteur.h"
+
 using namespace std;
 
 

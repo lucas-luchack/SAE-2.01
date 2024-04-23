@@ -6,10 +6,8 @@
 #include <vector>
 
 struct ImageDansDiaporama {
-    Image *image;       // rang de l'image dans le tableau d'images (vector<Images>)
-                        // = ordre de chargement initial des images dans la table des images
-    unsigned int rang;  // rang de l'image dans le diaporama
-                        // = ordre d'affichage choisi par l'utilisateur lors de la création du diaporama
+    Image *image;
+    unsigned int rang;
 };
 typedef vector<ImageDansDiaporama> ImagesDansDiaporama;
 
@@ -20,11 +18,14 @@ public:
     Diaporama(string, unsigned int = 1000);
     ~Diaporama();
 
+    std::string getTitre() const;
+
     void triCroissantRang();
     void ajouterImage(Image*, unsigned int);
     void avancer();
     void reculer();
     unsigned int nbImages() const;
+    void remiseAZero();
 
     ImagesDansDiaporama getImages() const;
     ImageDansDiaporama getImage() const;

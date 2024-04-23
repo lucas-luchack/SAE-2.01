@@ -16,13 +16,11 @@ int main()
      --------------------------------------------------------------------------------------*/
     Images images;          // les images
     Diaporamas diaporamas;  // les diaporamas
-    Lecteur lecteur;
 
     // Chargement des urls des images, chargement des diaporamas
     charger(images);
-    charger(diaporamas);
+    charger(diaporamas, images);
 
-    unsigned int taille_images = images.size();
     unsigned int taille_diaporamas = diaporamas.size();
 
     // Tri des images contenues dans les diaporamas pour les placer dans l'ordre d'apparition (rang) souhaité par l'utilisateur
@@ -37,33 +35,17 @@ int main()
      * --------------------- */
 
     // Elements autres que les images et diaporamas
-    unsigned int diaporamaCourant ; // identifiant du diaporama courant = indice dans le tableau diaporamas
-    unsigned int imageCourante ;    // identifiant de l'image courante du diaporama courant
-                                    // = indice de l'image dans le tableau diaporamas[diaporamaCourant].images, trié par ordre croissant de rang
-
-    /* Initialiser le diaporama et l'image courants
-     * ---------------
-       Les valeurs courantes sont définies par défaut
-       --> cela suppose qu'il y a toujours au moins 1 diaporama avec au moins 1 image dedans.
-       Autre option (meilleure, à mettre en place dans la version graphique)) :
-       - pas de diaporama courant au lancement de l'application
-       - le diaporama courant est choisi par l'utilisateur parmi une liste de diaporamas disponibles. */
-
-    diaporamaCourant = 0;
-    imageCourante = 0;
-
+    Lecteur lecteur;
 
     /* Faire fonctionner le lecteur
        --------------*/
     char choixAction ;              // pour saisir le choix de l'utilisateur dans le menu d'actions possibles
-    unsigned int choixDiaporama ;  // pour saisir le numéro de diaporama choisi par l'utilisiateur
     while (true)
     {
 
         /* Affichage à l'écran des infos de l'image courante dans son diaporama   */
         system("cls");  // effacer l'écran
-        unsigned int position = diaporamas[diaporamaCourant].localisationImages[imageCourante].pos;
-        afficherImageCouranteDansDiaporamaCourant (diaporamas[diaporamaCourant], imageCourante, images[position]);
+        lecteur.afficherImageDiapo();
 
 
         /* Menu des actions possibles (saisie choix utilisateur) :
@@ -77,7 +59,7 @@ int main()
 
         /* Faire l'action demandée (Avancer - Reculer - Changer de Diaporama - Quitter) */
         system("cls");  // effacer l'écran
-        declencherAction(choixAction, diaporamas, diaporamaCourant, imageCourante, images);
+        lecteur.declencherAction(choixAction);
     }
 
     /* Fin

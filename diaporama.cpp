@@ -11,6 +11,11 @@ Diaporama::~Diaporama()
 
 }
 
+string Diaporama::getTitre() const
+{
+    return this->titre;
+}
+
 void Diaporama::triCroissantRang()
 {
     unsigned int taille = this->nbImages();
@@ -59,6 +64,11 @@ void Diaporama::reculer()
 unsigned int Diaporama::nbImages() const
 {
     return this->images.size();
+}
+
+void Diaporama::remiseAZero()
+{
+    this->numImageCourante = 0;
 }
 
 ImagesDansDiaporama Diaporama::getImages() const

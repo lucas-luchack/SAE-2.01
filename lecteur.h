@@ -12,10 +12,18 @@ public:
     Lecteur();
 
     void changerDiaporama(unsigned int);
+    void chargerDiaporama(Diaporama*);
     void lireDiaporama() const;
 
     Diaporamas getDiaporamas() const;
     Diaporama* getCurrentDiaporama() const;
+
+    unsigned int getDiaporamasCount() const;
+
+    // Programmes provisoires pour les versions NON GRAPHIQUES
+    void afficherImageDiapo() const;
+    unsigned int saisieVerifChoixDiaporama() const;
+    void declencherAction(char);
 
 private:
     ModeLecteur mode;

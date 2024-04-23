@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "image.h"
+#include "lecteur.h"
 using namespace std;
 
 
@@ -22,14 +23,14 @@ void saisieVerifChoixActionSurImageCourante(char& pChoixAction)
     }
 }
 
-void charger(Diaporamas& pDiaporamas, Images& pImages)
+void charger(Lecteur& pLecteur, Images& pImages)
 {
     Diaporama *diaporama;
 
     // Diaporama par défaut
     diaporama = new Diaporama("Diaporama par defaut", 1);
     diaporama->ajouterImage(pImages[0], 1);
-    pDiaporamas.push_back(diaporama);
+    pLecteur.chargerDiaporama(diaporama);
 
     // Diaporama de Pantxika
     diaporama = new Diaporama("Diaporama Pantxika", 2);
@@ -37,7 +38,7 @@ void charger(Diaporamas& pDiaporamas, Images& pImages)
     diaporama->ajouterImage(pImages[1], 2);
     diaporama->ajouterImage(pImages[2], 4);
     diaporama->ajouterImage(pImages[3], 1);
-    pDiaporamas.push_back(diaporama);
+    pLecteur.chargerDiaporama(diaporama);
 
     // Diaporama de Thierry
     diaporama = new Diaporama("Diaporama Thierry", 4);
@@ -45,7 +46,7 @@ void charger(Diaporamas& pDiaporamas, Images& pImages)
     diaporama->ajouterImage(pImages[1], 2);
     diaporama->ajouterImage(pImages[2], 3);
     diaporama->ajouterImage(pImages[3], 4);
-    pDiaporamas.push_back(diaporama);
+    pLecteur.chargerDiaporama(diaporama);
 
     // Diaporama de Yann
     diaporama = new Diaporama("Diaporama Yann", 3);
@@ -53,7 +54,7 @@ void charger(Diaporamas& pDiaporamas, Images& pImages)
     diaporama->ajouterImage(pImages[1], 1);
     diaporama->ajouterImage(pImages[2], 4);
     diaporama->ajouterImage(pImages[3], 3);
-    pDiaporamas.push_back(diaporama);
+    pLecteur.chargerDiaporama(diaporama);
 
     // Diaporama de Manu
     diaporama = new Diaporama("Diaporama Manu", 1);
@@ -61,7 +62,7 @@ void charger(Diaporamas& pDiaporamas, Images& pImages)
     diaporama->ajouterImage(pImages[1], 3);
     diaporama->ajouterImage(pImages[2], 2);
     diaporama->ajouterImage(pImages[3], 1);
-    pDiaporamas.push_back(diaporama);
+    pLecteur.chargerDiaporama(diaporama);
 }
 
 void charger (Images& pImages) {

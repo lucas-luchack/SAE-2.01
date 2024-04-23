@@ -16,16 +16,18 @@ int main()
      --------------------------------------------------------------------------------------*/
     Images images;          // les images
     Diaporamas diaporamas;  // les diaporamas
+    Lecteur lecteur;
 
     // Chargement des urls des images, chargement des diaporamas
     charger(images);
-    charger(diaporamas, images);
+    charger(lecteur, images);
 
     unsigned int taille_diaporamas = diaporamas.size();
 
     // Tri des images contenues dans les diaporamas pour les placer dans l'ordre d'apparition (rang) souhaité par l'utilisateur
     for (unsigned int posDiapo = 0; posDiapo < taille_diaporamas; posDiapo++)
     {
+        cout << "Tri de : " << diaporamas[posDiapo]->getTitre() << " (" << posDiapo << ")" << endl;
         diaporamas[posDiapo]->triCroissantRang();
     }
 
@@ -33,9 +35,6 @@ int main()
     /* ---------------------
      * Lecteur de diaporamas
      * --------------------- */
-
-    // Elements autres que les images et diaporamas
-    Lecteur lecteur;
 
     /* Faire fonctionner le lecteur
        --------------*/

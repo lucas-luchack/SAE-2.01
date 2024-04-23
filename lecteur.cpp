@@ -2,7 +2,9 @@
 #include <iostream>
 using namespace std;
 
-Lecteur::Lecteur()
+Lecteur::Lecteur():
+    mode(manuel),
+    numDiaporama(0)
 {
 
 }

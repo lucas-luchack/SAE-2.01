@@ -3,6 +3,7 @@
 
 #include "image.h"
 #include "diaporama.h"
+#include "lecteur.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ void charger (Images& pImages);
    Dans une version ultérieure, ces informations seront stockées dans une Base de Données.
 */
 
-void charger (Diaporamas& pDiaporamas, Images& pImages);
+void charger (Lecteur& pLecteur, Images& pImages);
 /* Chargement du tableau des diaporamas avec des diaporamas préalablement construits 'en dur'.
    Dans une version ultérieure, le diaporama courant affiché par le Lecteur de diaporamas sera chargé à partir
    d'une base de données.

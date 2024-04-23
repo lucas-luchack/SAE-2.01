@@ -15,20 +15,18 @@ int main()
      * Dans un second temps, ces contenus proviendront d'une base de données
      --------------------------------------------------------------------------------------*/
     Images images;          // les images
-    Diaporamas diaporamas;  // les diaporamas
     Lecteur lecteur;
 
     // Chargement des urls des images, chargement des diaporamas
     charger(images);
     charger(lecteur, images);
 
-    unsigned int taille_diaporamas = diaporamas.size();
+    unsigned int taille_diaporamas = lecteur.getDiaporamasCount();
 
     // Tri des images contenues dans les diaporamas pour les placer dans l'ordre d'apparition (rang) souhaité par l'utilisateur
     for (unsigned int posDiapo = 0; posDiapo < taille_diaporamas; posDiapo++)
     {
-        cout << "Tri de : " << diaporamas[posDiapo]->getTitre() << " (" << posDiapo << ")" << endl;
-        diaporamas[posDiapo]->triCroissantRang();
+        lecteur.getDiaporamas()[posDiapo]->triCroissantRang();
     }
 
 

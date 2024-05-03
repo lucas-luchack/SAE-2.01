@@ -20,11 +20,6 @@ void Lecteur::chargerDiaporama(Diaporama *diapo)
     this->diaporamas.push_back(diapo);
 }
 
-void Lecteur::lireDiaporama() const
-{
-
-}
-
 Diaporamas Lecteur::getDiaporamas() const
 {
     return this->diaporamas;

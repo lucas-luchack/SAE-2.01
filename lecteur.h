@@ -13,7 +13,6 @@ public:
 
     void changerDiaporama(unsigned int);
     void chargerDiaporama(Diaporama*);
-    void lireDiaporama() const;
 
     Diaporamas getDiaporamas() const;
     Diaporama* getCurrentDiaporama() const;

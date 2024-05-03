@@ -19,8 +19,8 @@ public:
     LecteurVue(QWidget *parent = nullptr);
     ~LecteurVue();
 
-private slots:
-    void received();
+    void connect(QObject*);
+    void disconnect(QObject*);
 
 private:
     Ui::LecteurVue *ui;

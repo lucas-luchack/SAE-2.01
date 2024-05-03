@@ -4,20 +4,24 @@
 #include "modele.h"
 #include "lecteurvue.h"
 
-class Presentation
+class Presentation: public QObject
 {
+    Q_OBJECT
 public:
-    Presentation();
+    explicit Presentation(QObject *parent = nullptr);
 
-    void setVue(LecteurVue*);
-    void setModele(Modele*);
+    void setVue(LecteurVue *);
+    void setModele(Modele *);
 
-    LecteurVue* getVue() const;
-    Modele* getModele() const;
+    LecteurVue *getVue() const;
+    Modele *getModele() const;
 
 private:
     LecteurVue* vue;
     Modele* modele;
+
+private slots:
+    void received();
 };
 
 #endif // PRESENTATION_H

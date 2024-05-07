@@ -22,7 +22,10 @@ public:
     void connect(QObject*);
     void disconnect(QObject*);
 
+    void updateInterface();
+
 private:
     Ui::LecteurVue *ui;
+
 };
 #endif // LECTEURVUE_H

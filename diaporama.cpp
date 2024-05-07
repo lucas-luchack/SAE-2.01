@@ -1,5 +1,7 @@
 #include "diaporama.h"
 
+#include <QDebug>
+
 Diaporama::Diaporama(string titre, unsigned int vitesseDefilement):
     titre(titre),
     vitesseDefilement(vitesseDefilement),
@@ -39,6 +41,7 @@ void Diaporama::triCroissantRang()
 
 void Diaporama::avancer()
 {
+    qDebug() << "Test";
     if (this->numImageCourante == (this->nbImages() - 1))
     {
         this->numImageCourante = 0;

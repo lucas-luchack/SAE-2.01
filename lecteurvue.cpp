@@ -17,9 +17,9 @@ LecteurVue::~LecteurVue()
 
 void LecteurVue::connect(QObject *c)
 {
-    QObject::connect(ui->nextBtn, SIGNAL(clicked()), c, SLOT(received()));
+    QObject::connect(ui->nextBtn, SIGNAL(clicked()), c, SLOT(nextImage()));
     QObject::connect(ui->modeBtn, SIGNAL(clicked()), c, SLOT(received()));
-    QObject::connect(ui->previousBtn, SIGNAL(clicked()), c, SLOT(received()));
+    QObject::connect(ui->previousBtn, SIGNAL(clicked()), c, SLOT(previousImage()));
 
     QObject::connect(ui->actionAutomatique_2, SIGNAL(triggered()), c, SLOT(received()));
     QObject::connect(ui->actionManuel_2, SIGNAL(triggered()), c, SLOT(received()));
@@ -37,9 +37,9 @@ void LecteurVue::connect(QObject *c)
 
 void LecteurVue::disconnect(QObject *c)
 {
-    QObject::disconnect(ui->nextBtn, SIGNAL(clicked()), c, SLOT(received()));
+    QObject::disconnect(ui->nextBtn, SIGNAL(clicked()), c, SLOT(nextImage()));
     QObject::disconnect(ui->modeBtn, SIGNAL(clicked()), c, SLOT(received()));
-    QObject::disconnect(ui->previousBtn, SIGNAL(clicked()), c, SLOT(received()));
+    QObject::disconnect(ui->previousBtn, SIGNAL(clicked()), c, SLOT(previousImage()));
 
     QObject::disconnect(ui->actionAutomatique_2, SIGNAL(triggered()), c, SLOT(received()));
     QObject::disconnect(ui->actionManuel_2, SIGNAL(triggered()), c, SLOT(received()));
@@ -53,5 +53,9 @@ void LecteurVue::disconnect(QObject *c)
     QObject::disconnect(ui->actionA_propos, SIGNAL(triggered()), c, SLOT(received()));
 
     QObject::disconnect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(close()));
+}
+
+void LecteurVue::updateInterface()
+{
 }
 

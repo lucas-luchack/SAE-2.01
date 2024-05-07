@@ -33,3 +33,15 @@ void Presentation::received()
 {
     qDebug() << "Cliqué";
 }
+
+void Presentation::nextImage() const
+{
+    this->modele->getCurrentDiaporama()->avancer();
+    this->vue->updateInterface();
+}
+
+void Presentation::previousImage() const
+{
+    this->modele->getCurrentDiaporama()->reculer();
+    this->vue->updateInterface();
+}

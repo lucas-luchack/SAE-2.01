@@ -25,7 +25,7 @@ private slots:
 
     void nextImage() const;
     void previousImage() const;
-    void
+
 };
 
 #endif // PRESENTATION_H

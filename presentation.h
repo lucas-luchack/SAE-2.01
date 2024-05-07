@@ -10,6 +10,8 @@ class Presentation: public QObject
 public:
     explicit Presentation(QObject *parent = nullptr);
 
+    void initialize();
+
     void setVue(LecteurVue *);
     void setModele(Lecteur *);
 
@@ -25,6 +27,9 @@ private slots:
 
     void nextImage() const;
     void previousImage() const;
+
+    void updateImage() const;
+    void updateDiaporama() const;
 
 };
 

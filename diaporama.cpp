@@ -41,7 +41,6 @@ void Diaporama::triCroissantRang()
 
 void Diaporama::avancer()
 {
-    qDebug() << "Test";
     if (this->numImageCourante == (this->nbImages() - 1))
     {
         this->numImageCourante = 0;

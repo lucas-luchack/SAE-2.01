@@ -2,6 +2,7 @@
 #include "ui_lecteurvue.h"
 #include <iostream>
 #include <QDebug>
+#include <QPixmap>
 
 LecteurVue::LecteurVue(QWidget *parent)
     : QMainWindow(parent)
@@ -55,7 +56,19 @@ void LecteurVue::disconnect(QObject *c)
     QObject::disconnect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(close()));
 }
 
-void LecteurVue::updateInterface()
+void LecteurVue::updateDiaporama(QString name, int totalImages)
 {
+    this->ui->diapoTitle->setText(name);
+    this->ui->totalImages->setText(QString::number(totalImages));
+    this->ui->diapoProgress->setMaximum(totalImages);
+}
+
+void LecteurVue::updateImage(QString name, QString categorie, int current, QString location)
+{
+    this->ui->currentImage->setText(QString::number(current));
+    this->ui->imageName->setText(name);
+    this->ui->imageCat->setText(categorie);
+    this->ui->image->setPixmap(QPixmap(location));
+    this->ui->diapoProgress->setValue(current);
 }
 

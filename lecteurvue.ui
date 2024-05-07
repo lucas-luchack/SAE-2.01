@@ -89,9 +89,23 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="currentImage">
         <property name="text">
-         <string>XX/XX</string>
+         <string>XX</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="slash">
+        <property name="text">
+         <string>/</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="totalImages">
+        <property name="text">
+         <string>XX</string>
         </property>
        </widget>
       </item>

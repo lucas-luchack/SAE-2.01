@@ -2,6 +2,7 @@
 #include "lecteur.h"
 #include "presentation.h"
 
+#include "image.h"
 #include "sousProgrammes.h"
 
 #include <QApplication>
@@ -12,6 +13,10 @@ int main(int argc, char *argv[])
     LecteurVue w;
     Lecteur *m = new Lecteur;
     Presentation *p = new Presentation;
+
+    Images images;
+    charger(images);
+    charger(m, images);
 
     p->setModele(m);
     p->setVue(&w);

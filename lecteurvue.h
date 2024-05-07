@@ -22,7 +22,8 @@ public:
     void connect(QObject*);
     void disconnect(QObject*);
 
-    void updateInterface();
+    void updateDiaporama(QString, int);
+    void updateImage(QString, QString, int, QString);
 
 private:
     Ui::LecteurVue *ui;

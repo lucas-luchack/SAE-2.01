@@ -1,5 +1,5 @@
 #include "lecteurvue.h"
-#include "modele.h"
+#include "lecteur.h"
 #include "presentation.h"
 
 #include <QApplication>
@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     LecteurVue w;
-    Modele *m = new Modele;
+    Lecteur *m = new Lecteur;
     Presentation *p = new Presentation;
 
     p->setModele(m);

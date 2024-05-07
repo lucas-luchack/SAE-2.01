@@ -14,7 +14,7 @@ void Presentation::setVue(LecteurVue *vue)
     this->vue = vue;
 }
 
-void Presentation::setModele(Modele *modele)
+void Presentation::setModele(Lecteur *modele)
 {
     this->modele = modele;
 }
@@ -24,7 +24,7 @@ LecteurVue* Presentation::getVue() const
     return this->vue;
 }
 
-Modele* Presentation::getModele() const
+Lecteur* Presentation::getModele() const
 {
     return this->modele;
 }

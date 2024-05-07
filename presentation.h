@@ -1,7 +1,7 @@
 #ifndef PRESENTATION_H
 #define PRESENTATION_H
 
-#include "modele.h"
+#include "lecteur.h"
 #include "lecteurvue.h"
 
 class Presentation: public QObject
@@ -11,17 +11,21 @@ public:
     explicit Presentation(QObject *parent = nullptr);
 
     void setVue(LecteurVue *);
-    void setModele(Modele *);
+    void setModele(Lecteur *);
 
     LecteurVue *getVue() const;
-    Modele *getModele() const;
+    Lecteur *getModele() const;
 
 private:
     LecteurVue* vue;
-    Modele* modele;
+    Lecteur* modele;
 
 private slots:
     void received();
+
+    void nextImage() const;
+    void previousImage() const;
+    void
 };
 
 #endif // PRESENTATION_H

@@ -14,16 +14,16 @@ SOURCES += \
     lecteur.cpp \
     main.cpp \
     lecteurvue.cpp \
-    modele.cpp \
     presentation.cpp \
+    sousProgrammes.cpp
 
 HEADERS += \
     diaporama.h \
     image.h \
     lecteur.h \
     lecteurvue.h \
-    modele.h \
     presentation.h \
+    sousProgrammes.h
 
 FORMS += \
     lecteurvue.ui

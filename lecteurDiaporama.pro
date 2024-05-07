@@ -9,12 +9,18 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    diaporama.cpp \
+    image.cpp \
+    lecteur.cpp \
     main.cpp \
     lecteurvue.cpp \
     modele.cpp \
     presentation.cpp \
 
 HEADERS += \
+    diaporama.h \
+    image.h \
+    lecteur.h \
     lecteurvue.h \
     modele.h \
     presentation.h \

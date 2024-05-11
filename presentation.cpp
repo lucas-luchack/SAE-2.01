@@ -1,6 +1,7 @@
 #include "presentation.h"
 
 #include <QObject>
+#include <QMessageBox>
 
 Presentation::Presentation(QObject *parent)
     : QObject{parent}

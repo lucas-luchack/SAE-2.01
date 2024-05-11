@@ -19,11 +19,6 @@ public:
 
     unsigned int getDiaporamasCount() const;
 
-    // Programmes provisoires pour les versions NON GRAPHIQUES
-    void afficherImageDiapo() const;
-    unsigned int saisieVerifChoixDiaporama() const;
-    void declencherAction(char);
-
 private:
     ModeLecteur mode;
     unsigned int numDiaporama;

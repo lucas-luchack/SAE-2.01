@@ -35,7 +35,7 @@ unsigned int Lecteur::getDiaporamasCount() const
     return this->diaporamas.size();
 }
 
-ModeLecteur getMode() const
+ModeLecteur Lecteur::getMode() const
 {
     return this->mode;
 }

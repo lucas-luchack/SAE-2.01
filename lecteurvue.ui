@@ -36,7 +36,7 @@
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap>../../../../../DOWNLOADS/Title.png</pixmap>
+         <pixmap>C:\DIAPO\img.png</pixmap>
         </property>
        </widget>
       </item>

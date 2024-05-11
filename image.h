@@ -18,7 +18,6 @@ public:
     string getTitre() const;
     string getCategorie() const;
     string getChemin() const;
-    void afficher() const;
 
 private:
     string titre;

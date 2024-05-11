@@ -25,9 +25,3 @@ string Image::getChemin() const
 {
     return this->chemin;
 }
-
-void Image::afficher() const
-{
-    cout << "image(titre:" << this->getTitre() << ", categorie:"
-         << this->getCategorie() << ", chemin:"<< this->getChemin() << ")" << endl;
-}

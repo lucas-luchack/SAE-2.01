@@ -27,7 +27,7 @@ public:
     void avancer();
     void reculer();
     unsigned int nbImages() const;
-    void remiseAZero();
+    void reset();
 
     ImagesDansDiaporama getImages() const;
     ImageDansDiaporama getImage() const;

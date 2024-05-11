@@ -68,7 +68,7 @@ unsigned int Diaporama::nbImages() const
     return this->images.size();
 }
 
-void Diaporama::remiseAZero()
+void Diaporama::reset()
 {
     this->numImageCourante = 0;
 }

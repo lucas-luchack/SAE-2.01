@@ -47,17 +47,29 @@ void Presentation::previousImage() const
 
 void Presentation::unloadDiapo() const
 {
-
+    this->modele->numDiaporama = nullptr;
+    this->updateDiaporama();
 }
 
 void Presentation::loadDiapo() const
 {
+    QDialog selectionDialog;
+    bool ok = false;
+    unsigned int selected = selectionDialog.exec(this->modele->getDiaporamas(), &ok);
 
+    if (ok)
+    {
+        this->modele->numDiaporama = selected;
+        this->updateDiaporama();
+    }
 }
 
 void Presentation::openHelpDialog() const
 {
-    
+    QMessageBox helpDialog;
+    helpDialog.setText("Ce lecteur de diaporama à été réalisé dans le cadre de la SAE 2.02 par trois étudiants de l'IUT de Bayonne et du Pays Basque (département Informatique) :\nESPIET Lucas\nRIVRAIS-NOWAKOWSKI Mathis\nHOARAU Allan");
+    helpDialog.setInformativeText("Lecteur de Diaporama / SAE 2.02 / V2-MVP");
+    helpDialog.exec();
 }
 
 void Presentation::updateImage() const
@@ -76,4 +88,7 @@ void Presentation::updateDiaporama() const
                     QString::fromStdString(this->modele->getCurrentDiaporama()->getTitre()),
                     this->modele->getCurrentDiaporama()->nbImages()
                 );
+    
+    this->modele->getCurrentDiaporama()->reset();
+    this->updateImage();
 }

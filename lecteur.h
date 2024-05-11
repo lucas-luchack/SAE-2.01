@@ -14,6 +14,8 @@ public:
     void changerDiaporama(unsigned int);
     void chargerDiaporama(Diaporama*);
 
+    ModeLecteur getMode() const;
+    
     Diaporamas getDiaporamas() const;
     Diaporama* getCurrentDiaporama() const;
 

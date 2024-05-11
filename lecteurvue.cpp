@@ -28,10 +28,10 @@ void LecteurVue::connect(QObject *c)
     QObject::connect(ui->action1_seconde, SIGNAL(triggered()), c, SLOT(received()));
     QObject::connect(ui->action5_secondes, SIGNAL(triggered()), c, SLOT(received()));
     QObject::connect(ui->action10_secondes, SIGNAL(triggered()), c, SLOT(received()));
-    QObject::connect(ui->actionCharger_un_diaporama, SIGNAL(triggered()), c, SLOT(received()));
-    QObject::connect(ui->actionEnlever_le_diaporama, SIGNAL(triggered()), c, SLOT(received()));
+    QObject::connect(ui->actionCharger_un_diaporama, SIGNAL(triggered()), c, SLOT(loadDiapo()));
+    QObject::connect(ui->actionEnlever_le_diaporama, SIGNAL(triggered()), c, SLOT(unloadDiapo()));
 
-    QObject::connect(ui->actionA_propos, SIGNAL(triggered()), c, SLOT(received()));
+    QObject::connect(ui->actionA_propos, SIGNAL(triggered()), c, SLOT(openHelpDialog()));
 
     QObject::connect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(close()));
 }
@@ -48,10 +48,10 @@ void LecteurVue::disconnect(QObject *c)
     QObject::disconnect(ui->action1_seconde, SIGNAL(triggered()), c, SLOT(received()));
     QObject::disconnect(ui->action5_secondes, SIGNAL(triggered()), c, SLOT(received()));
     QObject::disconnect(ui->action10_secondes, SIGNAL(triggered()), c, SLOT(received()));
-    QObject::disconnect(ui->actionCharger_un_diaporama, SIGNAL(triggered()), c, SLOT(received()));
-    QObject::disconnect(ui->actionEnlever_le_diaporama, SIGNAL(triggered()), c, SLOT(received()));
+    QObject::disconnect(ui->actionCharger_un_diaporama, SIGNAL(triggered()), c, SLOT(loadDiapo()));
+    QObject::disconnect(ui->actionEnlever_le_diaporama, SIGNAL(triggered()), c, SLOT(unloadDiapo()));
 
-    QObject::disconnect(ui->actionA_propos, SIGNAL(triggered()), c, SLOT(received()));
+    QObject::disconnect(ui->actionA_propos, SIGNAL(triggered()), c, SLOT(openHelpDialog()));
 
     QObject::disconnect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(close()));
 }

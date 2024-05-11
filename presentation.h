@@ -22,14 +22,17 @@ private:
     LecteurVue* vue;
     Lecteur* modele;
 
+    void updateImage() const;
+    void updateDiaporama() const;
+
 private slots:
     void received();
+    void openHelpDialog() const;
 
     void nextImage() const;
     void previousImage() const;
-
-    void updateImage() const;
-    void updateDiaporama() const;
+    void unloadDiapo() const;
+    void loadDiapo() const;
 
 };
 

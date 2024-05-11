@@ -45,6 +45,21 @@ void Presentation::previousImage() const
     this->updateImage();
 }
 
+void Presentation::unloadDiapo() const
+{
+
+}
+
+void Presentation::loadDiapo() const
+{
+
+}
+
+void Presentation::openHelpDialog() const
+{
+    
+}
+
 void Presentation::updateImage() const
 {
     this->vue->updateImage(

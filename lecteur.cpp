@@ -5,9 +5,7 @@ using namespace std;
 Lecteur::Lecteur():
     mode(manuel),
     numDiaporama(0)
-{
-
-}
+{}
 
 void Lecteur::changerDiaporama(unsigned int numDiapo)
 {

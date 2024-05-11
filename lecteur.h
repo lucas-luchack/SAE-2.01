@@ -28,8 +28,7 @@ private:
     ModeLecteur mode;
     unsigned int numDiaporama;
     Diaporamas diaporamas;
-    unsigned int id;
-
+    
 };
 
 #endif // LECTEUR_H

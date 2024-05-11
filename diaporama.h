@@ -19,6 +19,8 @@ public:
     ~Diaporama();
 
     std::string getTitre() const;
+    unsigned int getId() const;
+    unsigned int getVitesseDefilement() const;
 
     void triCroissantRang();
     void ajouterImage(Image*, unsigned int);
@@ -32,6 +34,7 @@ public:
 
 private:
     std::string titre;
+    unsigned int id;
     unsigned int vitesseDefilement;
     unsigned int numImageCourante;
     ImagesDansDiaporama images;

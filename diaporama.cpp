@@ -91,3 +91,13 @@ void Diaporama::ajouterImage(Image *image, unsigned int rang)
 
     this->images.push_back(imgDansDiapo);
 }
+
+unsigned int Diaporama::getId() const
+{
+    return this->id;
+}
+
+unsigned int Diaporama::getVitesseDefilement() const
+{
+    return this->vitesseDefilement;
+}

@@ -15,6 +15,7 @@ SOURCES += \
     main.cpp \
     lecteurvue.cpp \
     presentation.cpp \
+    selectionform.cpp \
     sousProgrammes.cpp
 
 HEADERS += \
@@ -23,10 +24,12 @@ HEADERS += \
     lecteur.h \
     lecteurvue.h \
     presentation.h \
+    selectionform.h \
     sousProgrammes.h
 
 FORMS += \
-    lecteurvue.ui
+    lecteurvue.ui \
+    selectionform.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -10,7 +10,7 @@ Lecteur::Lecteur():
 void Lecteur::changerDiaporama(unsigned int numDiapo)
 {
     this->numDiaporama = numDiapo;
-    this->getCurrentDiaporama()->remiseAZero();
+    this->getCurrentDiaporama()->reset();
 }
 
 void Lecteur::chargerDiaporama(Diaporama *diapo)

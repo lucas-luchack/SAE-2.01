@@ -2,11 +2,17 @@
 
 #include <QObject>
 #include <QMessageBox>
+#import "selectionform.h"
 
 Presentation::Presentation(QObject *parent)
     : QObject{parent}
 {
 
+}
+
+void Presentation::initialize()
+{
+    this->updateDiaporama();
 }
 
 void Presentation::setVue(LecteurVue *vue)
@@ -48,19 +54,20 @@ void Presentation::previousImage() const
 
 void Presentation::unloadDiapo() const
 {
-    this->modele->numDiaporama = nullptr;
+    this->modele->changerDiaporama(0);
     this->updateDiaporama();
 }
 
 void Presentation::loadDiapo() const
 {
-    QDialog selectionDialog;
-    bool ok = false;
-    unsigned int selected = selectionDialog.exec(this->modele->getDiaporamas(), &ok);
+    SelectionForm selectionDialog;
+    selectionDialog.setDiaporamaList(this->modele->getDiaporamas());
+    int result = selectionDialog.exec();
 
-    if (ok)
+    if (result == QDialog::Accepted)
     {
-        this->modele->numDiaporama = selected;
+        int selected = selectionDialog.getSelectedDiaporama() + 1;
+        this->modele->changerDiaporama(selected);
         this->updateDiaporama();
     }
 }

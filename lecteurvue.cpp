@@ -9,6 +9,7 @@ LecteurVue::LecteurVue(QWidget *parent)
     , ui(new Ui::LecteurVue)
 {
     ui->setupUi(this);
+    ui->statusBar->showMessage("Mode manuel");
 }
 
 LecteurVue::~LecteurVue()
@@ -70,5 +71,7 @@ void LecteurVue::updateImage(QString name, QString categorie, int current, QStri
     this->ui->imageCat->setText(categorie);
     this->ui->image->setPixmap(QPixmap(location));
     this->ui->diapoProgress->setValue(current);
+
+    this->ui->statusBar->showMessage("Mode manuel");
 }
 

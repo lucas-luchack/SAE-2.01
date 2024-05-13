@@ -18,6 +18,11 @@ void Lecteur::chargerDiaporama(Diaporama *diapo)
     this->diaporamas.push_back(diapo);
 }
 
+void Lecteur::setMode(ModeLecteur mode)
+{
+    this->mode = mode;
+}
+
 Diaporamas Lecteur::getDiaporamas() const
 {
     return this->diaporamas;

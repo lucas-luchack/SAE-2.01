@@ -34,6 +34,10 @@ private slots:
     void unloadDiapo() const;
     void loadDiapo() const;
 
+    void changeMode() const;
+    void changeModeToAuto(bool) const;
+    void changeModeToManuel(bool) const;
+
 };
 
 #endif // PRESENTATION_H

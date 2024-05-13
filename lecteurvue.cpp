@@ -20,18 +20,17 @@ LecteurVue::~LecteurVue()
 void LecteurVue::connect(QObject *c)
 {
     QObject::connect(ui->nextBtn, SIGNAL(clicked()), c, SLOT(nextImage()));
-    QObject::connect(ui->modeBtn, SIGNAL(clicked()), c, SLOT(received()));
+    QObject::connect(ui->modeBtn, SIGNAL(clicked()), c, SLOT(changeMode()));
     QObject::connect(ui->previousBtn, SIGNAL(clicked()), c, SLOT(previousImage()));
 
-    QObject::connect(ui->actionAutomatique_2, SIGNAL(triggered()), c, SLOT(received()));
-    QObject::connect(ui->actionManuel_2, SIGNAL(triggered()), c, SLOT(received()));
+    QObject::connect(ui->actionAutomatique_2, SIGNAL(triggered(bool)), c, SLOT(changeModeToAuto(bool)));
+    QObject::connect(ui->actionManuel_2, SIGNAL(triggered(bool)), c, SLOT(changeModeToManuel(bool)));
     QObject::connect(ui->actionPersonnalis, SIGNAL(triggered()), c, SLOT(received()));
     QObject::connect(ui->action1_seconde, SIGNAL(triggered()), c, SLOT(received()));
     QObject::connect(ui->action5_secondes, SIGNAL(triggered()), c, SLOT(received()));
     QObject::connect(ui->action10_secondes, SIGNAL(triggered()), c, SLOT(received()));
     QObject::connect(ui->actionCharger_un_diaporama, SIGNAL(triggered()), c, SLOT(loadDiapo()));
     QObject::connect(ui->actionEnlever_le_diaporama, SIGNAL(triggered()), c, SLOT(unloadDiapo()));
-
     QObject::connect(ui->actionA_propos, SIGNAL(triggered()), c, SLOT(openHelpDialog()));
 
     QObject::connect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(close()));
@@ -51,7 +50,6 @@ void LecteurVue::disconnect(QObject *c)
     QObject::disconnect(ui->action10_secondes, SIGNAL(triggered()), c, SLOT(received()));
     QObject::disconnect(ui->actionCharger_un_diaporama, SIGNAL(triggered()), c, SLOT(loadDiapo()));
     QObject::disconnect(ui->actionEnlever_le_diaporama, SIGNAL(triggered()), c, SLOT(unloadDiapo()));
-
     QObject::disconnect(ui->actionA_propos, SIGNAL(triggered()), c, SLOT(openHelpDialog()));
 
     QObject::disconnect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(close()));
@@ -73,5 +71,15 @@ void LecteurVue::updateImage(QString name, QString categorie, int current, QStri
     this->ui->diapoProgress->setValue(current);
 
     this->ui->statusBar->showMessage("Mode manuel");
+}
+
+void LecteurVue::updateModeButton(ModeLecteur mode)
+{
+
+    QString modeTxt = mode == automatique? "Arrêter": "Démarrer";
+    this->ui->modeBtn->setText(modeTxt);
+
+    this->ui->actionAutomatique_2->setChecked(mode == automatique);
+    this->ui->actionManuel_2->setChecked(mode == manuel);
 }
 

@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     p->initialize();
     w.connect(p);
 
-    w.setWindowTitle("Lecteur de diaporama - V3 (MVP)");
+    w.setWindowTitle("Lecteur de diaporama - V4 (MVP)");
     w.setWindowIcon(QIcon(":/icon"));
 
     w.show();

@@ -166,7 +166,7 @@
       <item>
        <widget class="QPushButton" name="modeBtn">
         <property name="text">
-         <string>Démarer/Arrêter</string>
+         <string>Démarrer/Arrêter</string>
         </property>
        </widget>
       </item>

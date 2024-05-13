@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <iostream>
 #include <QString>
+#include "lecteur.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,6 +25,7 @@ public:
 
     void updateDiaporama(QString, int);
     void updateImage(QString, QString, int, QString);
+    void updateModeButton(ModeLecteur);
 
 private:
     Ui::LecteurVue *ui;

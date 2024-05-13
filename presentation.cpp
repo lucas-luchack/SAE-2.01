@@ -2,7 +2,7 @@
 
 #include <QObject>
 #include <QMessageBox>
-#import "selectionform.h"
+#include "selectionform.h"
 
 Presentation::Presentation(QObject *parent)
     : QObject{parent}
@@ -76,7 +76,7 @@ void Presentation::openHelpDialog() const
 {
     QMessageBox helpDialog;
     helpDialog.setText("Ce lecteur de diaporama à été réalisé dans le cadre de la SAE 2.02 par trois étudiants de l'IUT de Bayonne et du Pays Basque (département Informatique) :\nESPIET Lucas\nRIVRAIS-NOWAKOWSKI Mathis\nHOARAU Allan");
-    helpDialog.setInformativeText("Lecteur de Diaporama / SAE 2.02 / V2-MVP");
+    helpDialog.setInformativeText("Lecteur de Diaporama / SAE 2.02 / V3-MVP");
     helpDialog.exec();
 }
 

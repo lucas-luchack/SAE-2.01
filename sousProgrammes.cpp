@@ -34,10 +34,10 @@ void charger(Lecteur* pLecteur, Images& pImages)
 
     // Diaporama de Pantxika
     diaporama = new Diaporama("Diaporama Pantxika", 2);
-    diaporama->ajouterImage(pImages[4], 3);
+    diaporama->ajouterImage(pImages[8], 3);
     diaporama->ajouterImage(pImages[1], 2);
     diaporama->ajouterImage(pImages[2], 4);
-    diaporama->ajouterImage(pImages[3], 1);
+    diaporama->ajouterImage(pImages[6], 1);
     pLecteur->chargerDiaporama(diaporama);
 
     // Diaporama de Thierry
@@ -50,37 +50,57 @@ void charger(Lecteur* pLecteur, Images& pImages)
 
     // Diaporama de Yann
     diaporama = new Diaporama("Diaporama Yann", 3);
-    diaporama->ajouterImage(pImages[4], 2);
+    diaporama->ajouterImage(pImages[10], 2);
     diaporama->ajouterImage(pImages[1], 1);
-    diaporama->ajouterImage(pImages[2], 4);
+    diaporama->ajouterImage(pImages[5], 4);
     diaporama->ajouterImage(pImages[3], 3);
     pLecteur->chargerDiaporama(diaporama);
 
     // Diaporama de Manu
     diaporama = new Diaporama("Diaporama Manu", 1);
     diaporama->ajouterImage(pImages[4], 4);
-    diaporama->ajouterImage(pImages[1], 3);
-    diaporama->ajouterImage(pImages[2], 2);
-    diaporama->ajouterImage(pImages[3], 1);
+    diaporama->ajouterImage(pImages[5], 3);
+    diaporama->ajouterImage(pImages[9], 2);
+    diaporama->ajouterImage(pImages[6], 1);
+    pLecteur->chargerDiaporama(diaporama);
+
+    // Diaporama de Lucas
+    diaporama = new Diaporama("Diaporama de Lucas", 5);
+    diaporama->ajouterImage(pImages[1], 10);
+    diaporama->ajouterImage(pImages[2], 5);
+    diaporama->ajouterImage(pImages[3], 3);
+    diaporama->ajouterImage(pImages[4], 8);
+    diaporama->ajouterImage(pImages[5], 7);
+    diaporama->ajouterImage(pImages[6], 1);
+    diaporama->ajouterImage(pImages[7], 9);
+    diaporama->ajouterImage(pImages[8], 2);
+    diaporama->ajouterImage(pImages[9], 4);
+    diaporama->ajouterImage(pImages[10], 6);
     pLecteur->chargerDiaporama(diaporama);
 }
 
 void charger (Images& pImages) {
     Image *imageACharger;
-    imageACharger = new Image("objet", "", "C:\\cartesDisney\\Disney_tapis.gif");
+    imageACharger = new Image("", "objet", "C:\\cartesDisney\\Disney_tapis.gif");
     pImages.push_back(imageACharger);
-    imageACharger = new Image("personnage", "Blanche Neige", "C:\\cartesDisney\\Disney_4.gif");
+    imageACharger = new Image("Blanche Neige", "personnage", "C:\\cartesDisney\\Disney_4.gif");
     pImages.push_back(imageACharger);
-    imageACharger = new Image("personnage", "Alice", "C:\\cartesDisney\\Disney_2.gif");
+    imageACharger = new Image("Alice", "personnage", "C:\\cartesDisney\\Disney_2.gif");
     pImages.push_back(imageACharger);
-    imageACharger = new Image("animal", "Mickey", "C:\\cartesDisney\\Disney_19.gif");
+    imageACharger = new Image("Mickey", "animal", "C:\\cartesDisney\\Disney_19.gif");
     pImages.push_back(imageACharger);
-    imageACharger = new Image("personnage", "Pinnochio", "C:\\cartesDisney\\Disney_29.gif");
+    imageACharger = new Image("Pinnochio", "personnage", "C:\\cartesDisney\\Disney_29.gif");
     pImages.push_back(imageACharger);
-    imageACharger = new Image("objet", "chateau", "C:\\cartesDisney\\Disney_0.gif");
+    imageACharger = new Image("chateau", "objet", "C:\\cartesDisney\\Disney_0.gif");
     pImages.push_back(imageACharger);
-    imageACharger = new Image("personnage", "Minnie", "C:\\cartesDisney\\Disney_14.gif");
+    imageACharger = new Image("Minnie", "personnage", "C:\\cartesDisney\\Disney_14.gif");
     pImages.push_back(imageACharger);
-    imageACharger = new Image("animal", "Bambi", "C:\\cartesDisney\\Disney_3.gif");
+    imageACharger = new Image("Bambi", "animal", "C:\\cartesDisney\\Disney_3.gif");
+    pImages.push_back(imageACharger);
+    imageACharger = new Image("Picsou internet", "animal", "C:\\cartesDisney\\Disney_17.gif");
+    pImages.push_back(imageACharger);
+    imageACharger = new Image("Tigrou", "animal", "C:\\cartesDisney\\Disney_39.gif");
+    pImages.push_back(imageACharger);
+    imageACharger = new Image("Tarzan", "personnage", "C:\\cartesDisney\\Disney_38.gif");
     pImages.push_back(imageACharger);
 }

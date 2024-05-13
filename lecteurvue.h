@@ -30,5 +30,7 @@ public:
 private:
     Ui::LecteurVue *ui;
 
+    void updateStatusMessage(ModeLecteur);
+
 };
 #endif // LECTEURVUE_H

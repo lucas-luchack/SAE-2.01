@@ -44,12 +44,14 @@ void Presentation::nextImage() const
 {
     this->modele->getCurrentDiaporama()->avancer();
     this->updateImage();
+    this->changeModeToAuto(false);
 }
 
 void Presentation::previousImage() const
 {
     this->modele->getCurrentDiaporama()->reculer();
     this->updateImage();
+    this->changeModeToAuto(false);
 }
 
 void Presentation::unloadDiapo() const

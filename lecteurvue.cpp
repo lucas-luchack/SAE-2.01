@@ -69,17 +69,19 @@ void LecteurVue::updateImage(QString name, QString categorie, int current, QStri
     this->ui->imageCat->setText(categorie);
     this->ui->image->setPixmap(QPixmap(location));
     this->ui->diapoProgress->setValue(current);
-
-    this->ui->statusBar->showMessage("Mode manuel");
 }
 
 void LecteurVue::updateModeButton(ModeLecteur mode)
 {
-
-    QString modeTxt = mode == automatique? "Arrêter": "Démarrer";
+    QString modeTxt = mode == automatique ? "Arrêter": "Démarrer";
     this->ui->modeBtn->setText(modeTxt);
 
     this->ui->actionAutomatique_2->setChecked(mode == automatique);
     this->ui->actionManuel_2->setChecked(mode == manuel);
+    this->updateStatusMessage(mode);
 }
 
+void LecteurVue::updateStatusMessage(ModeLecteur mode)
+{
+    this->ui->statusBar->showMessage(mode == automatique ? "Mode automatique" : "Mode manuel");
+}

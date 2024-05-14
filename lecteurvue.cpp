@@ -60,6 +60,7 @@ void LecteurVue::updateDiaporama(QString name, int totalImages)
     this->ui->diapoTitle->setText(name);
     this->ui->totalImages->setText(QString::number(totalImages));
     this->ui->diapoProgress->setMaximum(totalImages);
+    this->updateStatusMessage(ModeLecteur::manuel);
 }
 
 void LecteurVue::updateImage(QString name, QString categorie, int current, QString location)

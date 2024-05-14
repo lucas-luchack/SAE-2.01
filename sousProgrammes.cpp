@@ -28,12 +28,12 @@ void charger(Lecteur* pLecteur, Images& pImages)
     Diaporama *diaporama;
 
     // Diaporama par défaut
-    diaporama = new Diaporama("Diaporama par defaut", 1);
+    diaporama = new Diaporama("Diaporama par defaut", 1000);
     diaporama->ajouterImage(pImages[0], 1);
     pLecteur->chargerDiaporama(diaporama);
 
     // Diaporama de Pantxika
-    diaporama = new Diaporama("Diaporama Pantxika", 2);
+    diaporama = new Diaporama("Diaporama Pantxika", 2000);
     diaporama->ajouterImage(pImages[8], 3);
     diaporama->ajouterImage(pImages[1], 2);
     diaporama->ajouterImage(pImages[2], 4);
@@ -41,7 +41,7 @@ void charger(Lecteur* pLecteur, Images& pImages)
     pLecteur->chargerDiaporama(diaporama);
 
     // Diaporama de Thierry
-    diaporama = new Diaporama("Diaporama Thierry", 4);
+    diaporama = new Diaporama("Diaporama Thierry", 4000);
     diaporama->ajouterImage(pImages[4], 1);
     diaporama->ajouterImage(pImages[1], 2);
     diaporama->ajouterImage(pImages[2], 3);
@@ -49,7 +49,7 @@ void charger(Lecteur* pLecteur, Images& pImages)
     pLecteur->chargerDiaporama(diaporama);
 
     // Diaporama de Yann
-    diaporama = new Diaporama("Diaporama Yann", 3);
+    diaporama = new Diaporama("Diaporama Yann", 3000);
     diaporama->ajouterImage(pImages[10], 2);
     diaporama->ajouterImage(pImages[1], 1);
     diaporama->ajouterImage(pImages[5], 4);
@@ -57,7 +57,7 @@ void charger(Lecteur* pLecteur, Images& pImages)
     pLecteur->chargerDiaporama(diaporama);
 
     // Diaporama de Manu
-    diaporama = new Diaporama("Diaporama Manu", 1);
+    diaporama = new Diaporama("Diaporama Manu", 1000);
     diaporama->ajouterImage(pImages[4], 4);
     diaporama->ajouterImage(pImages[5], 3);
     diaporama->ajouterImage(pImages[9], 2);
@@ -65,7 +65,7 @@ void charger(Lecteur* pLecteur, Images& pImages)
     pLecteur->chargerDiaporama(diaporama);
 
     // Diaporama de Lucas
-    diaporama = new Diaporama("Diaporama de Lucas", 5);
+    diaporama = new Diaporama("Diaporama de Lucas", 5000);
     diaporama->ajouterImage(pImages[1], 10);
     diaporama->ajouterImage(pImages[2], 5);
     diaporama->ajouterImage(pImages[3], 3);

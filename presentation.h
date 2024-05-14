@@ -21,6 +21,7 @@ public:
 private:
     LecteurVue* vue;
     Lecteur* modele;
+    QTimer* timer;
 
     void updateImage() const;
     void updateDiaporama() const;
@@ -30,6 +31,7 @@ private slots:
     void openHelpDialog() const;
 
     void nextImage() const;
+    void automaticNext() const;
     void previousImage() const;
     void unloadDiapo() const;
     void loadDiapo() const;

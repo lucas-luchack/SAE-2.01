@@ -2,12 +2,14 @@
 
 #include <QObject>
 #include <QMessageBox>
+#include <QTimer>
 #include "selectionform.h"
 
 Presentation::Presentation(QObject *parent)
     : QObject{parent}
 {
-
+    timer = new QTimer(this);
+    QObject::connect(this->timer, SIGNAL(timeout()), this, SLOT(automaticNext()));
 }
 
 void Presentation::initialize()
@@ -47,6 +49,12 @@ void Presentation::nextImage() const
     this->changeModeToAuto(false);
 }
 
+void Presentation::automaticNext() const
+{
+    this->modele->getCurrentDiaporama()->avancer();
+    this->updateImage();
+}
+
 void Presentation::previousImage() const
 {
     this->modele->getCurrentDiaporama()->reculer();
@@ -79,11 +87,12 @@ void Presentation::changeMode() const
     if (this->modele->getMode() == ModeLecteur::automatique)
     {
         this->modele->setMode(manuel);
-
+        this->timer->stop();
     }
     else
     {
         this->modele->setMode(automatique);
+        this->timer->start(this->modele->getCurrentDiaporama()->getVitesseDefilement());
     }
 
     this->vue->updateModeButton(this->modele->getMode());
@@ -94,10 +103,12 @@ void Presentation::changeModeToAuto(bool checked) const
     if (checked && this->modele->getMode() != automatique)
     {
         this->modele->setMode(automatique);
+        this->timer->start(this->modele->getCurrentDiaporama()->getVitesseDefilement());
     }
     else if (!checked && this->modele->getMode() == automatique)
     {
         this->modele->setMode(manuel);
+        this->timer->stop();
     }
 
     this->vue->updateModeButton(this->modele->getMode());
@@ -108,10 +119,12 @@ void Presentation::changeModeToManuel(bool checked) const
     if (checked && this->modele->getMode() != manuel)
     {
         this->modele->setMode(manuel);
+        this->timer->stop();
     }
     else if (!checked && this->modele->getMode() == manuel)
     {
         this->modele->setMode(automatique);
+        this->timer->start(this->modele->getCurrentDiaporama()->getVitesseDefilement());
     }
 
     this->vue->updateModeButton(this->modele->getMode());

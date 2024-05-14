@@ -101,3 +101,8 @@ unsigned int Diaporama::getVitesseDefilement() const
 {
     return this->vitesseDefilement;
 }
+
+void Diaporama::setVitesseDefilement(unsigned int speed)
+{
+    this->vitesseDefilement = speed;
+}

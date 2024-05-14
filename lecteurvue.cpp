@@ -25,10 +25,10 @@ void LecteurVue::connect(QObject *c)
 
     QObject::connect(ui->actionAutomatique_2, SIGNAL(triggered(bool)), c, SLOT(changeModeToAuto(bool)));
     QObject::connect(ui->actionManuel_2, SIGNAL(triggered(bool)), c, SLOT(changeModeToManuel(bool)));
-    QObject::connect(ui->actionPersonnalis, SIGNAL(triggered()), c, SLOT(received()));
-    QObject::connect(ui->action1_seconde, SIGNAL(triggered()), c, SLOT(received()));
-    QObject::connect(ui->action5_secondes, SIGNAL(triggered()), c, SLOT(received()));
-    QObject::connect(ui->action10_secondes, SIGNAL(triggered()), c, SLOT(received()));
+    QObject::connect(ui->actionPersonnalis, SIGNAL(triggered()), c, SLOT(selectOwnSpeed()));
+    QObject::connect(ui->action1_seconde, SIGNAL(triggered()), c, SLOT(select1SecSpeed()));
+    QObject::connect(ui->action5_secondes, SIGNAL(triggered()), c, SLOT(select5SecSpeed()));
+    QObject::connect(ui->action10_secondes, SIGNAL(triggered()), c, SLOT(select10SecSpeed()));
     QObject::connect(ui->actionCharger_un_diaporama, SIGNAL(triggered()), c, SLOT(loadDiapo()));
     QObject::connect(ui->actionEnlever_le_diaporama, SIGNAL(triggered()), c, SLOT(unloadDiapo()));
     QObject::connect(ui->actionA_propos, SIGNAL(triggered()), c, SLOT(openHelpDialog()));
@@ -42,12 +42,12 @@ void LecteurVue::disconnect(QObject *c)
     QObject::disconnect(ui->modeBtn, SIGNAL(clicked()), c, SLOT(received()));
     QObject::disconnect(ui->previousBtn, SIGNAL(clicked()), c, SLOT(previousImage()));
 
-    QObject::disconnect(ui->actionAutomatique_2, SIGNAL(triggered()), c, SLOT(received()));
-    QObject::disconnect(ui->actionManuel_2, SIGNAL(triggered()), c, SLOT(received()));
-    QObject::disconnect(ui->actionPersonnalis, SIGNAL(triggered()), c, SLOT(received()));
-    QObject::disconnect(ui->action1_seconde, SIGNAL(triggered()), c, SLOT(received()));
-    QObject::disconnect(ui->action5_secondes, SIGNAL(triggered()), c, SLOT(received()));
-    QObject::disconnect(ui->action10_secondes, SIGNAL(triggered()), c, SLOT(received()));
+    QObject::disconnect(ui->actionAutomatique_2, SIGNAL(triggered()), c, SLOT(changeModeToAuto(bool)));
+    QObject::disconnect(ui->actionManuel_2, SIGNAL(triggered()), c, SLOT(changeModeToManuel(bool)));
+    QObject::disconnect(ui->actionPersonnalis, SIGNAL(triggered()), c, SLOT(selectOwnSpeed()));
+    QObject::disconnect(ui->action1_seconde, SIGNAL(triggered()), c, SLOT(select1SecSpeed()));
+    QObject::disconnect(ui->action5_secondes, SIGNAL(triggered()), c, SLOT(select5SecSpeed()));
+    QObject::disconnect(ui->action10_secondes, SIGNAL(triggered()), c, SLOT(select10SecSpeed()));
     QObject::disconnect(ui->actionCharger_un_diaporama, SIGNAL(triggered()), c, SLOT(loadDiapo()));
     QObject::disconnect(ui->actionEnlever_le_diaporama, SIGNAL(triggered()), c, SLOT(unloadDiapo()));
     QObject::disconnect(ui->actionA_propos, SIGNAL(triggered()), c, SLOT(openHelpDialog()));

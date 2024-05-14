@@ -26,19 +26,26 @@ private:
     void updateImage() const;
     void updateDiaporama() const;
 
+    void resetTimerSpeed() const;
+
 private slots:
-    void received();
     void openHelpDialog() const;
 
     void nextImage() const;
     void automaticNext() const;
     void previousImage() const;
+
     void unloadDiapo() const;
     void loadDiapo() const;
 
     void changeMode() const;
     void changeModeToAuto(bool) const;
     void changeModeToManuel(bool) const;
+
+    void select1SecSpeed() const;
+    void select5SecSpeed() const;
+    void select10SecSpeed() const;
+    void selectOwnSpeed() const;
 
 };
 

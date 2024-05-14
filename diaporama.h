@@ -22,6 +22,8 @@ public:
     unsigned int getId() const;
     unsigned int getVitesseDefilement() const;
 
+    void setVitesseDefilement(unsigned int);
+
     void triCroissantRang();
     void ajouterImage(Image*, unsigned int);
     void avancer();

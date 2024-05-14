@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QMessageBox>
 #include <QTimer>
+#include <QInputDialog>
 #include "selectionform.h"
 
 Presentation::Presentation(QObject *parent)
@@ -35,11 +36,6 @@ LecteurVue* Presentation::getVue() const
 Lecteur* Presentation::getModele() const
 {
     return this->modele;
-}
-
-void Presentation::received()
-{
-    qDebug() << "Cliqué";
 }
 
 void Presentation::nextImage() const
@@ -92,7 +88,7 @@ void Presentation::changeMode() const
     else
     {
         this->modele->setMode(automatique);
-        this->timer->start(this->modele->getCurrentDiaporama()->getVitesseDefilement());
+        this->resetTimerSpeed();
     }
 
     this->vue->updateModeButton(this->modele->getMode());
@@ -103,7 +99,7 @@ void Presentation::changeModeToAuto(bool checked) const
     if (checked && this->modele->getMode() != automatique)
     {
         this->modele->setMode(automatique);
-        this->timer->start(this->modele->getCurrentDiaporama()->getVitesseDefilement());
+        this->resetTimerSpeed();
     }
     else if (!checked && this->modele->getMode() == automatique)
     {
@@ -124,10 +120,40 @@ void Presentation::changeModeToManuel(bool checked) const
     else if (!checked && this->modele->getMode() == manuel)
     {
         this->modele->setMode(automatique);
-        this->timer->start(this->modele->getCurrentDiaporama()->getVitesseDefilement());
+        this->resetTimerSpeed();
     }
 
     this->vue->updateModeButton(this->modele->getMode());
+}
+
+void Presentation::select1SecSpeed() const
+{
+    this->modele->getCurrentDiaporama()->setVitesseDefilement(1000);
+    this->resetTimerSpeed();
+}
+
+void Presentation::select5SecSpeed() const
+{
+    this->modele->getCurrentDiaporama()->setVitesseDefilement(1000);
+    this->resetTimerSpeed();
+}
+
+void Presentation::select10SecSpeed() const
+{
+    this->modele->getCurrentDiaporama()->setVitesseDefilement(1000);
+    this->resetTimerSpeed();
+}
+
+void Presentation::selectOwnSpeed() const
+{
+    bool ok = false;
+    double result = QInputDialog::getDouble(this->vue, "Vitesse de défilement", "Entrez la vitesse de défilement en secondes", 1, 0, 50000, 1, &ok);
+
+    if (ok)
+    {
+        this->modele->getCurrentDiaporama()->setVitesseDefilement(result*1000);
+        this->resetTimerSpeed();
+    }
 }
 
 void Presentation::openHelpDialog() const
@@ -158,4 +184,10 @@ void Presentation::updateDiaporama() const
     
     this->modele->getCurrentDiaporama()->reset();
     this->updateImage();
+}
+
+void Presentation::resetTimerSpeed() const
+{
+    this->timer->stop();
+    this->timer->start(this->modele->getCurrentDiaporama()->getVitesseDefilement());
 }

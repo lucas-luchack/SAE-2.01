@@ -41,28 +41,38 @@ Lecteur* Presentation::getModele() const
 
 void Presentation::nextImage() const
 {
-    this->modele->getCurrentDiaporama()->avancer();
-    this->updateImage();
-    this->changeModeToAuto(false);
+    if (this->modele->getDiaporamasCount() != 0) {
+        this->modele->getCurrentDiaporama()->avancer();
+        this->updateImage();
+        this->changeModeToAuto(false);
+    }
 }
 
 void Presentation::automaticNext() const
 {
-    this->modele->getCurrentDiaporama()->avancer();
-    this->updateImage();
+    if (this->modele->getDiaporamasCount() != 0) {
+        this->modele->getCurrentDiaporama()->avancer();
+        this->updateImage();
+    }
 }
 
 void Presentation::previousImage() const
 {
-    this->modele->getCurrentDiaporama()->reculer();
-    this->updateImage();
-    this->changeModeToAuto(false);
+    if (this->modele->getDiaporamasCount() != 0) {
+        this->modele->getCurrentDiaporama()->reculer();
+        this->updateImage();
+        this->changeModeToAuto(false);
+    }
 }
 
 void Presentation::unloadDiapo() const
 {
-    this->modele->changerDiaporama(0);
-    this->modele->removeAllDiapo();
+    if (this->modele->getDiaporamasCount() != 0) {
+        this->modele->changerDiaporama(0);
+        this->modele->removeAllDiapo();
+        this->vue->resetInterface();
+        this->timer->stop();
+    }
 }
 
 void Presentation::loadDiapo() const
@@ -71,10 +81,11 @@ void Presentation::loadDiapo() const
     selectionDialog.setDiaporamaList(this->modele->getDiaporamas());
     int result = selectionDialog.exec();
 
-    if (result == QDialog::Accepted)
+    if (result == QDialog::Accepted && this->modele->getDiaporamasCount() != 0)
     {
         int selected = selectionDialog.getSelectedDiaporama() + 1;
         this->modele->changerDiaporama(selected);
+        this->timer->stop();
         this->updateDiaporama();
     }
 }
@@ -104,79 +115,93 @@ void Presentation::loadAllDiapo() const
 
 void Presentation::changeMode() const
 {
-    if (this->modele->getMode() == ModeLecteur::automatique)
-    {
-        this->modele->setMode(manuel);
-        this->timer->stop();
-    }
-    else
-    {
-        this->modele->setMode(automatique);
-        this->resetTimerSpeed();
-    }
+    if (this->modele->getDiaporamasCount() != 0) {
+        if (this->modele->getMode() == ModeLecteur::automatique)
+        {
+            this->modele->setMode(manuel);
+            this->timer->stop();
+        }
+        else
+        {
+            this->modele->setMode(automatique);
+            this->resetTimerSpeed();
+        }
 
-    this->vue->updateModeButton(this->modele->getMode());
+        this->vue->updateModeButton(this->modele->getMode());
+    }
 }
 
 void Presentation::changeModeToAuto(bool checked) const
 {
-    if (checked && this->modele->getMode() != automatique)
-    {
-        this->modele->setMode(automatique);
-        this->resetTimerSpeed();
-    }
-    else if (!checked && this->modele->getMode() == automatique)
-    {
-        this->modele->setMode(manuel);
-        this->timer->stop();
-    }
+    if (this->modele->getDiaporamasCount() != 0) {
+        if (checked && this->modele->getMode() != automatique)
+        {
+            this->modele->setMode(automatique);
+            this->resetTimerSpeed();
+        }
+        else if (!checked && this->modele->getMode() == automatique)
+        {
+            this->modele->setMode(manuel);
+            this->timer->stop();
+        }
 
-    this->vue->updateModeButton(this->modele->getMode());
+        this->vue->updateModeButton(this->modele->getMode());
+    }
 }
 
 void Presentation::changeModeToManuel(bool checked) const
 {
-    if (checked && this->modele->getMode() != manuel)
-    {
-        this->modele->setMode(manuel);
-        this->timer->stop();
-    }
-    else if (!checked && this->modele->getMode() == manuel)
-    {
-        this->modele->setMode(automatique);
-        this->resetTimerSpeed();
-    }
+    if (this->modele->getDiaporamasCount() != 0) {
+        if (checked && this->modele->getMode() != manuel)
+        {
+            this->modele->setMode(manuel);
+            this->timer->stop();
+        }
+        else if (!checked && this->modele->getMode() == manuel)
+        {
+            this->modele->setMode(automatique);
+            this->resetTimerSpeed();
+        }
 
-    this->vue->updateModeButton(this->modele->getMode());
+        this->vue->updateModeButton(this->modele->getMode());
+    }
 }
 
 void Presentation::select1SecSpeed() const
 {
-    this->modele->getCurrentDiaporama()->setVitesseDefilement(1000);
-    this->resetTimerSpeed();
+    if (this->modele->getDiaporamasCount() != 0) {
+        this->modele->getCurrentDiaporama()->setVitesseDefilement(1000);
+        this->resetTimerSpeed();
+    }
 }
 
 void Presentation::select5SecSpeed() const
 {
-    this->modele->getCurrentDiaporama()->setVitesseDefilement(1000);
-    this->resetTimerSpeed();
+    if (this->modele->getDiaporamasCount() != 0) {
+        this->modele->getCurrentDiaporama()->setVitesseDefilement(5000);
+        this->resetTimerSpeed();
+    }
 }
 
 void Presentation::select10SecSpeed() const
 {
-    this->modele->getCurrentDiaporama()->setVitesseDefilement(1000);
-    this->resetTimerSpeed();
+    if (this->modele->getDiaporamasCount() != 0) {
+        this->modele->getCurrentDiaporama()->setVitesseDefilement(10000);
+        this->resetTimerSpeed();
+    }
 }
 
 void Presentation::selectOwnSpeed() const
 {
-    bool ok = false;
-    double result = QInputDialog::getDouble(this->vue, "Vitesse de défilement", "Entrez la vitesse de défilement en secondes", 1, 0, 50000, 1, &ok);
+    if (this->modele->getDiaporamasCount() != 0) {
+        bool ok = false;
+        double result = QInputDialog::getDouble(this->vue, "Vitesse de défilement", "Entrez la vitesse de défilement en secondes", 1, 0, 50000, 1, &ok);
 
-    if (ok)
-    {
-        this->modele->getCurrentDiaporama()->setVitesseDefilement(result*1000);
-        this->resetTimerSpeed();
+        if (ok)
+        {
+            this->modele->getCurrentDiaporama()->setVitesseDefilement(result*1000);
+            this->resetTimerSpeed();
+        }
     }
 }
 
@@ -213,5 +238,7 @@ void Presentation::updateDiaporama() const
 void Presentation::resetTimerSpeed() const
 {
     this->timer->stop();
-    this->timer->start(this->modele->getCurrentDiaporama()->getVitesseDefilement());
+    if (this->modele->getMode() == ModeLecteur::automatique) {
+        this->timer->start(this->modele->getCurrentDiaporama()->getVitesseDefilement());
+    }
 }

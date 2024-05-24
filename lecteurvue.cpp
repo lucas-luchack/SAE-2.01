@@ -87,7 +87,14 @@ void LecteurVue::updateModeButton(ModeLecteur mode)
 
 void LecteurVue::resetInterface() const
 {
-
+    this->ui->diapoProgress->setValue(0);
+    this->ui->diapoTitle->setText("Aucun Diaporama");
+    this->ui->imageName->setText("Aucune image");
+    this->ui->imageCat->setText("Aucune Catégorie");
+    this->ui->currentImage->setText("XX");
+    this->ui->totalImages->setText("XX");
+    this->ui->image->setText("");
+    this->ui->modeBtn->setText("Démarrer/Arrêter");
 }
 
 void LecteurVue::updateStatusMessage(ModeLecteur mode)

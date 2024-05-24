@@ -26,6 +26,7 @@ public:
     void updateDiaporama(QString, int);
     void updateImage(QString, QString, int, QString);
     void updateModeButton(ModeLecteur);
+    void resetInterface() const;
 
 private:
     Ui::LecteurVue *ui;

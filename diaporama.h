@@ -30,6 +30,7 @@ public:
     void reculer();
     unsigned int nbImages() const;
     void reset();
+    vector<Image*> removeAllImages(vector<Image*>);
 
     ImagesDansDiaporama getImages() const;
     ImageDansDiaporama getImage() const;

@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <QInputDialog>
 #include "selectionform.h"
+#include "sousProgrammes.h"
 
 Presentation::Presentation(QObject *parent)
     : QObject{parent}
@@ -13,7 +14,7 @@ Presentation::Presentation(QObject *parent)
     QObject::connect(this->timer, SIGNAL(timeout()), this, SLOT(automaticNext()));
 }
 
-void Presentation::initialize()
+void Presentation::initialize() const
 {
     this->updateDiaporama();
 }
@@ -61,7 +62,7 @@ void Presentation::previousImage() const
 void Presentation::unloadDiapo() const
 {
     this->modele->changerDiaporama(0);
-    this->updateDiaporama();
+    this->modele->removeAllDiapo();
 }
 
 void Presentation::loadDiapo() const
@@ -77,6 +78,29 @@ void Presentation::loadDiapo() const
         this->updateDiaporama();
     }
 }
+
+void Presentation::loadAllDiapo() const
+{
+
+    if(this->modele->getDiaporamasCount()==0)
+    {
+        Images images;
+        charger(images);
+        charger(this->modele, images);
+
+        unsigned int taille_diaporamas = this->modele->getDiaporamasCount();
+
+        for (unsigned int posDiapo = 0; posDiapo < taille_diaporamas; posDiapo++)
+        {
+            this->modele->getDiaporamas()[posDiapo]->triCroissantRang();
+        }
+
+        this->initialize();
+    }
+
+}
+
+
 
 void Presentation::changeMode() const
 {

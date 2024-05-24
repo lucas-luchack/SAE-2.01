@@ -1,6 +1,8 @@
 #include "diaporama.h"
 
+
 #include <QDebug>
+#include <vector>
 
 Diaporama::Diaporama(string titre, unsigned int vitesseDefilement):
     titre(titre),
@@ -105,4 +107,33 @@ unsigned int Diaporama::getVitesseDefilement() const
 void Diaporama::setVitesseDefilement(unsigned int speed)
 {
     this->vitesseDefilement = speed;
+}
+
+vector<Image*> Diaporama::removeAllImages(vector<Image*> deletedImages)
+{
+    ImageDansDiaporama img;
+    while(!this->images.empty())
+    {
+        img = this->images.back();
+
+        unsigned int taille = deletedImages.size();
+        bool found = false;
+        for (unsigned int i = 0; i < taille; i++)
+        {
+            if (deletedImages[i] == img.image)
+            {
+                found = true;
+            }
+        }
+
+        if (!found)
+        {
+            deletedImages.push_back(img.image);
+            delete img.image;
+        }
+
+        this->images.pop_back();
+    }
+
+    return deletedImages;
 }

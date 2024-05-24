@@ -14,20 +14,11 @@ int main(int argc, char *argv[])
     Lecteur *m = new Lecteur;
     Presentation *p = new Presentation;
 
-    Images images;
-    charger(images);
-    charger(m, images);
-
-    unsigned int taille_diaporamas = m->getDiaporamasCount();
-    for (unsigned int posDiapo = 0; posDiapo < taille_diaporamas; posDiapo++)
-    {
-        m->getDiaporamas()[posDiapo]->triCroissantRang();
-    }
 
     p->setModele(m);
     p->setVue(&w);
 
-    p->initialize();
+
     w.connect(p);
 
     w.setWindowTitle("Lecteur de diaporama - V5 (MVP)");

@@ -16,7 +16,7 @@ public:
 
     void setMode(ModeLecteur);
     ModeLecteur getMode() const;
-
+    void removeAllDiapo();
     
     Diaporamas getDiaporamas() const;
     Diaporama* getCurrentDiaporama() const;

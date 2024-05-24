@@ -194,6 +194,9 @@
     <property name="title">
      <string>Fichier</string>
     </property>
+    <addaction name="actionCharger_les_diaporamas"/>
+    <addaction name="actionEnlever_les_diaporamas"/>
+    <addaction name="separator"/>
     <addaction name="actionQuitter"/>
    </widget>
    <widget class="QMenu" name="menuDiaporama">
@@ -216,8 +219,7 @@
      <addaction name="action10_secondes"/>
      <addaction name="actionPersonnalis"/>
     </widget>
-    <addaction name="actionCharger_un_diaporama"/>
-    <addaction name="actionEnlever_le_diaporama"/>
+    <addaction name="actionChanger_un_diaporama"/>
     <addaction name="separator"/>
     <addaction name="menuMode"/>
     <addaction name="menuVitesse_de_d_filement"/>
@@ -284,9 +286,19 @@
     <string>Enlever le diaporama</string>
    </property>
   </action>
-  <action name="actionCharger_un_diaporama">
+  <action name="actionChanger_un_diaporama">
    <property name="text">
-    <string>Charger un diaporama</string>
+    <string>Changer un diaporama</string>
+   </property>
+  </action>
+  <action name="actionCharger_les_diaporamas">
+   <property name="text">
+    <string>Charger les diaporamas</string>
+   </property>
+  </action>
+  <action name="actionEnlever_les_diaporamas">
+   <property name="text">
+    <string>Enlever les diaporamas</string>
    </property>
   </action>
  </widget>

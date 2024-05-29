@@ -2,6 +2,7 @@
 #define LECTEUR_H
 
 #include "diaporama.h"
+#include "database.h"
 
 enum ModeLecteur {automatique, manuel};
 

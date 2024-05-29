@@ -22,6 +22,7 @@ private:
     LecteurVue* vue;
     Lecteur* modele;
     QTimer* timer;
+    Database *db;
 
     void updateImage() const;
     void updateDiaporama() const;

@@ -7,7 +7,10 @@ using namespace std;
 Lecteur::Lecteur():
     mode(manuel),
     numDiaporama(0)
-{}
+{
+    this->db = new Database();
+    this->db->openDatabase();
+}
 
 void Lecteur::changerDiaporama(unsigned int numDiapo)
 {

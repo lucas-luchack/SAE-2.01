@@ -12,6 +12,9 @@ Presentation::Presentation(QObject *parent)
 {
     timer = new QTimer(this);
     QObject::connect(this->timer, SIGNAL(timeout()), this, SLOT(automaticNext()));
+
+    this->db = new Database();
+    this->db->openDatabase();
 }
 
 void Presentation::initialize() const
@@ -96,8 +99,9 @@ void Presentation::loadAllDiapo() const
     if(this->modele->getDiaporamasCount()==0)
     {
         Images images;
-        charger(images);
-        charger(this->modele, images);
+
+        this->db->importImages(this->modele);
+        this->db->importDiapos(this->modele);
 
         unsigned int taille_diaporamas = this->modele->getDiaporamasCount();
 

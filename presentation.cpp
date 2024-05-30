@@ -95,13 +95,12 @@ void Presentation::loadDiapo() const
 
 void Presentation::loadAllDiapo() const
 {
-
     if(this->modele->getDiaporamasCount()==0)
     {
         Images images;
 
-        this->db->importImages(this->modele);
-        this->db->importDiapos(this->modele);
+        this->db->importImages(images);
+        this->db->importDiapos(this->modele, images);
 
         unsigned int taille_diaporamas = this->modele->getDiaporamasCount();
 
@@ -221,17 +220,17 @@ void Presentation::openHelpDialog() const
 void Presentation::updateImage() const
 {
     this->vue->updateImage(
-                    QString::fromStdString(this->modele->getCurrentDiaporama()->getImage().image->getTitre()),
-                    QString::fromStdString(this->modele->getCurrentDiaporama()->getImage().image->getCategorie()),
+                    this->modele->getCurrentDiaporama()->getImage().image->getTitre(),
+                    this->modele->getCurrentDiaporama()->getImage().image->getCategorie(),
                     this->modele->getCurrentDiaporama()->getImage().rang,
-                    QString::fromStdString(this->modele->getCurrentDiaporama()->getImage().image->getChemin())
+                    this->modele->getCurrentDiaporama()->getImage().image->getChemin()
                 );
 }
 
 void Presentation::updateDiaporama() const
 {
     this->vue->updateDiaporama(
-                    QString::fromStdString(this->modele->getCurrentDiaporama()->getTitre()),
+                    this->modele->getCurrentDiaporama()->getTitre(),
                     this->modele->getCurrentDiaporama()->nbImages()
                 );
     

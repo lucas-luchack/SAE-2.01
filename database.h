@@ -5,8 +5,9 @@
 #define DRIVER "QODBC"
 
 #include <QSqlDatabase>
-#include "lecteur.h"
+#include "image.h"
 
+class Lecteur;
 class Database
 {
 public:
@@ -15,8 +16,8 @@ public:
     bool openDatabase();
     void closeDatabase();
 
-    void importImages(Lecteur*) const;
-    void importDiapos(Lecteur*) const;
+    void importImages(Images&) const;
+    void importDiapos(Lecteur*, Images&) const;
 
     bool isOpen() const;
 

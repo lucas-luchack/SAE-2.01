@@ -1,24 +1,25 @@
 #ifndef DIAPORAMA_H
 #define DIAPORAMA_H
 
-#include <iostream>
 #include <image.h>
 #include <vector>
+
+#include <QString>
 
 struct ImageDansDiaporama {
     Image *image;
     unsigned int rang;
 };
-typedef vector<ImageDansDiaporama> ImagesDansDiaporama;
+typedef std::vector<ImageDansDiaporama> ImagesDansDiaporama;
 
 class Diaporama
 {
 
 public:
-    Diaporama(string, unsigned int = 1000);
+    Diaporama(QString, unsigned int = 1000);
     ~Diaporama();
 
-    std::string getTitre() const;
+    QString getTitre() const;
     unsigned int getId() const;
     unsigned int getVitesseDefilement() const;
 
@@ -30,13 +31,13 @@ public:
     void reculer();
     unsigned int nbImages() const;
     void reset();
-    vector<Image*> removeAllImages(vector<Image*>);
+    std::vector<Image*> removeAllImages(std::vector<Image*>);
 
     ImagesDansDiaporama getImages() const;
     ImageDansDiaporama getImage() const;
 
 private:
-    std::string titre;
+    QString titre;
     unsigned int id;
     unsigned int vitesseDefilement;
     unsigned int numImageCourante;
@@ -44,6 +45,6 @@ private:
 
 };
 
-typedef vector<Diaporama*> Diaporamas;
+typedef std::vector<Diaporama*> Diaporamas;
 
 #endif // DIAPORAMA_H

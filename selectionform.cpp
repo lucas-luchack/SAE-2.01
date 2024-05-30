@@ -20,7 +20,7 @@ void SelectionForm::setDiaporamaList(Diaporamas diapos)
 
     for (unsigned int num = 1; num < nbDiaporamas; num++)
     {
-        this->ui->comboBox->addItem(QString::fromStdString(diapos[num]->getTitre()));
+        this->ui->comboBox->addItem(diapos[num]->getTitre());
     }
 }
 

@@ -4,7 +4,7 @@
 #include <QDebug>
 #include <vector>
 
-Diaporama::Diaporama(string titre, unsigned int vitesseDefilement):
+Diaporama::Diaporama(QString titre, unsigned int vitesseDefilement):
     titre(titre),
     vitesseDefilement(vitesseDefilement),
     numImageCourante(0)
@@ -15,7 +15,7 @@ Diaporama::~Diaporama()
 
 }
 
-string Diaporama::getTitre() const
+QString Diaporama::getTitre() const
 {
     return this->titre;
 }
@@ -109,7 +109,7 @@ void Diaporama::setVitesseDefilement(unsigned int speed)
     this->vitesseDefilement = speed;
 }
 
-vector<Image*> Diaporama::removeAllImages(vector<Image*> deletedImages)
+std::vector<Image*> Diaporama::removeAllImages(std::vector<Image*> deletedImages)
 {
     ImageDansDiaporama img;
     while(!this->images.empty())

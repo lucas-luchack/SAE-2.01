@@ -2,6 +2,9 @@
 #include <QDebug>
 
 #include <QSqlQuery>
+#include "image.h"
+#include "diaporama.h"
+#include "lecteur.h"
 
 Database::Database()
 {
@@ -38,14 +41,54 @@ void Database::closeDatabase()
     this->db.close();
 }
 
-void Database::importImages(Lecteur *) const
+void Database::importImages(Images &imgs) const
 {
+    if (this->db.isOpen())
+    {
+        QSqlQuery query("SELECT i.idphoto, i.titrePhoto, f.nomFamille, i.uriPhoto FROM Diapos i JOIN Familles f ON f.idFamille = i.idFam ORDER BY idphoto;");
+        bool ok = query.exec();
 
+        Image *imageACharger;
+
+        if (ok)
+        {
+            for (unsigned int i = 0; query.next(); i++)
+            {
+                imageACharger = new Image(query.value(1).toString(), query.value(2).toString(), query.value(3).toString());
+                imgs.push_back(imageACharger);
+            }
+        }
+    }
 }
 
-void Database::importDiapos(Lecteur *) const
+void Database::importDiapos(Lecteur *l, Images &imgs) const
 {
+    if (this->db.isOpen())
+    {
+        QSqlQuery query("SELECT * FROM Diaporamas");
+        bool ok = query.exec();
 
+        Diaporama *diaporama;
+
+        if (ok)
+        {
+            for (unsigned int i = 0; query.next(); i++)
+            {
+                diaporama = new Diaporama(query.value(1).toString(), static_cast<unsigned int>(query.value(2).toInt() * 1000));
+
+                QSqlQuery query2;
+                query2.prepare("SELECT * FROM DiaposDansDiaporama WHERE idDiaporama = :id");
+                query2.bindValue(":id", query.value(0));
+
+                for (unsigned int i = 0; query2.next(); i++)
+                {
+                    diaporama->ajouterImage(imgs[query2.value(0).toInt()], query2.value(2).toInt());
+                }
+
+                l->chargerDiaporama(diaporama);
+            }
+        }
+    }
 }
 
 bool Database::isOpen() const

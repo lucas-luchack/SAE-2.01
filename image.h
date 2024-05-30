@@ -1,8 +1,7 @@
 #ifndef IMAGE_H
 #define IMAGE_H
 
-#include <iostream>
-using namespace std;
+#include <QString>
 
 #include <vector>
 
@@ -12,20 +11,20 @@ class Image
 {
 
 public:
-    Image(string = "", string = "", string = "");
+    Image(QString = "", QString = "", QString = "");
     ~Image();
 
-    string getTitre() const;
-    string getCategorie() const;
-    string getChemin() const;
+    QString getTitre() const;
+    QString getCategorie() const;
+    QString getChemin() const;
 
 private:
-    string titre;
-    string categorie;
-    string chemin;
+    QString titre;
+    QString categorie;
+    QString chemin;
 
 };
 
-typedef vector<Image*> Images;
+typedef std::vector<Image*> Images;
 
 #endif // IMAGE_H

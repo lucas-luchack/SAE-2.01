@@ -70,9 +70,8 @@ void Presentation::previousImage() const
 void Presentation::unloadDiapo() const
 {
     if (this->modele->getDiaporamasCount() != 0) {
-        this->modele->changerDiaporama(0);
-        this->modele->removeAllDiapo();
         this->vue->resetInterface();
+        this->modele->removeAllDiapo();
         this->timer->stop();
     }
 }
@@ -85,7 +84,7 @@ void Presentation::loadDiapo() const
 
     if (result == QDialog::Accepted && this->modele->getDiaporamasCount() != 0)
     {
-        int selected = selectionDialog.getSelectedDiaporama() + 1;
+        int selected = selectionDialog.getSelectedDiaporama();
         this->modele->changerDiaporama(selected);
         this->timer->stop();
         this->updateDiaporama();
@@ -99,10 +98,8 @@ void Presentation::loadAllDiapo() const
         Images images;
 
         bool ok = this->db->importImages(images);
-        if (ok) {
-            qDebug() << "test passed";
+        if (ok)
             ok = this->db->importDiapos(this->modele, images);
-        }
 
         if (ok) {
             unsigned int taille_diaporamas = this->modele->getDiaporamasCount();

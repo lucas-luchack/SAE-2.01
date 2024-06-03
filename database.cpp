@@ -1,6 +1,7 @@
 #include "database.h"
 #include <QDebug>
 
+#include <QSqlError>
 #include <QSqlQuery>
 #include "image.h"
 #include "diaporama.h"
@@ -45,12 +46,11 @@ bool Database::importImages(Images &imgs) const
 {
     if (this->db.isOpen())
     {
-        QSqlQuery query("SELECT i.idphoto, i.titrePhoto, f.nomFamille, i.uriPhoto FROM Diapos i JOIN Familles f ON f.idFamille = i.idFam ORDER BY i.idphoto");
-        bool ok = query.exec();
-
+        QSqlQuery query;
+        query.prepare("SELECT i.idphoto, i.titrePhoto, f.nomFamille, i.uriPhoto FROM Diapos i JOIN Familles f ON f.idFamille = i.idFam ORDER BY idphoto");
         Image *imageACharger;
 
-        if (ok)
+        if (query.exec())
         {
             for (unsigned int i = 0; query.next(); i++)
             {
@@ -69,7 +69,8 @@ bool Database::importDiapos(Lecteur *l, Images &imgs) const
 {
     if (this->db.isOpen())
     {
-        QSqlQuery query("SELECT * FROM Diaporamas");
+        QSqlQuery query;
+        query.prepare("SELECT * FROM Diaporamas");
         bool ok = query.exec();
 
         Diaporama *diaporama;
@@ -82,7 +83,8 @@ bool Database::importDiapos(Lecteur *l, Images &imgs) const
 
                 QSqlQuery query2;
                 query2.prepare("SELECT * FROM DiaposDansDiaporama WHERE idDiaporama = :id");
-                query2.bindValue(":id", query.value(0));
+                query2.bindValue(":id", query.value(0).toUInt());
+                query2.exec();
 
                 for (unsigned int i = 0; query2.next(); i++)
                 {

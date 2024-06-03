@@ -24,8 +24,9 @@ QString Diaporama::getTitre() const
 void Diaporama::triCroissantRang()
 {
     unsigned int taille = this->nbImages();
+
     ImageDansDiaporama imageDansDiapo;
-    for (unsigned int ici = taille-1; ici >=1 ; ici--)
+    for (unsigned int ici = taille-1; ici >= 1 ; ici--)
     {
         // faire monter la bulle ici = déplacer l'élément de rang le plus grand en position ici
         // par échanges successifs

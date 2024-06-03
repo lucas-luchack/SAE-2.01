@@ -18,7 +18,7 @@ void SelectionForm::setDiaporamaList(Diaporamas diapos)
 {
     unsigned int nbDiaporamas = diapos.size();
 
-    for (unsigned int num = 1; num < nbDiaporamas; num++)
+    for (unsigned int num = 0; num < nbDiaporamas; num++)
     {
         this->ui->comboBox->addItem(diapos[num]->getTitre());
     }

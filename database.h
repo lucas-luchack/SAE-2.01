@@ -10,6 +10,8 @@
 class Lecteur;
 class Database
 {
+enum ModeModif { categorieImg, cheminImg };
+
 public:
     Database();
 
@@ -18,6 +20,9 @@ public:
 
     void importImages(Images&) const;
     void importDiapos(Lecteur*, Images&) const;
+
+    void updateSpeed(unsigned int, unsigned int);
+    void updateImage(unsigned int, ModeModif, QString);
 
     bool isOpen() const;
 

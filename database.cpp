@@ -54,7 +54,7 @@ void Database::importImages(Images &imgs) const
         {
             for (unsigned int i = 0; query.next(); i++)
             {
-                imageACharger = new Image(query.value(1).toString(), query.value(2).toString(), query.value(3).toString());
+                imageACharger = new Image(query.value(0).toUInt(), query.value(1).toString(), query.value(2).toString(), query.value(3).toString());
                 imgs.push_back(imageACharger);
             }
         }
@@ -74,7 +74,7 @@ void Database::importDiapos(Lecteur *l, Images &imgs) const
         {
             for (unsigned int i = 0; query.next(); i++)
             {
-                diaporama = new Diaporama(query.value(1).toString(), static_cast<unsigned int>(query.value(2).toInt() * 1000));
+                diaporama = new Diaporama(query.value(0).toUInt(), query.value(1).toString(), static_cast<unsigned int>(query.value(2).toInt() * 1000));
 
                 QSqlQuery query2;
                 query2.prepare("SELECT * FROM DiaposDansDiaporama WHERE idDiaporama = :id");
@@ -89,6 +89,19 @@ void Database::importDiapos(Lecteur *l, Images &imgs) const
             }
         }
     }
+}
+
+void Database::updateSpeed(unsigned int id, unsigned int vitesse)
+{
+    if (this->db.isOpen())
+    {
+
+    }
+}
+
+void Database::updateImage(unsigned int, ModeModif, QString)
+{
+
 }
 
 bool Database::isOpen() const

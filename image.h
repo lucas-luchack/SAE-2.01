@@ -11,14 +11,19 @@ class Image
 {
 
 public:
-    Image(QString = "", QString = "", QString = "");
+    Image(unsigned int, QString = "", QString = "", QString = "");
     ~Image();
 
     QString getTitre() const;
     QString getCategorie() const;
     QString getChemin() const;
 
+    void setTitre(QString);
+    void setCategorie(QString);
+    void setChemin(QString);
+
 private:
+    unsigned int id;
     QString titre;
     QString categorie;
     QString chemin;

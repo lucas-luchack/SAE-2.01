@@ -4,7 +4,8 @@
 #include <QDebug>
 #include <vector>
 
-Diaporama::Diaporama(QString titre, unsigned int vitesseDefilement):
+Diaporama::Diaporama(unsigned int id, QString titre, unsigned int vitesseDefilement):
+    id(id),
     titre(titre),
     vitesseDefilement(vitesseDefilement),
     numImageCourante(0)
@@ -83,6 +84,16 @@ ImagesDansDiaporama Diaporama::getImages() const
 ImageDansDiaporama Diaporama::getImage() const
 {
     return this->images[this->numImageCourante];
+}
+
+void Diaporama::setId(unsigned int id)
+{
+    this->id = id;
+}
+
+void Diaporama::setTitre(QString titre)
+{
+    this->titre = titre;
 }
 
 void Diaporama::ajouterImage(Image *image, unsigned int rang)

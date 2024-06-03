@@ -16,14 +16,12 @@ class Diaporama
 {
 
 public:
-    Diaporama(QString, unsigned int = 1000);
+    Diaporama(unsigned int, QString, unsigned int = 1000);
     ~Diaporama();
 
     QString getTitre() const;
     unsigned int getId() const;
     unsigned int getVitesseDefilement() const;
-
-    void setVitesseDefilement(unsigned int);
 
     void triCroissantRang();
     void ajouterImage(Image*, unsigned int);
@@ -35,6 +33,10 @@ public:
 
     ImagesDansDiaporama getImages() const;
     ImageDansDiaporama getImage() const;
+
+    void setId(unsigned int);
+    void setTitre(QString);
+    void setVitesseDefilement(unsigned int);
 
 private:
     QString titre;

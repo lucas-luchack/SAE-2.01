@@ -61,7 +61,7 @@
         <item>
          <widget class="QLabel" name="image">
           <property name="text">
-           <string>Aucune image</string>
+           <string/>
           </property>
           <property name="pixmap">
            <pixmap>C:/DIAPO/img.png</pixmap>
@@ -236,7 +236,7 @@
     </property>
     <addaction name="actionChanger_URI_image"/>
     <addaction name="actionChanger_Cat_image"/>
-    <addaction name="actionChanger_la_vitesse_par_d_faut_du_diaporama"/>
+    <addaction name="actionChanger_vitesse_default"/>
    </widget>
    <addaction name="menuFichier"/>
    <addaction name="menu_dition"/>
@@ -315,7 +315,7 @@
     <string>Changer la catégorie de l'image</string>
    </property>
   </action>
-  <action name="actionChanger_la_vitesse_par_d_faut_du_diaporama">
+  <action name="actionChanger_vitesse_default">
    <property name="text">
     <string>Changer la vitesse par défaut du diaporama</string>
    </property>

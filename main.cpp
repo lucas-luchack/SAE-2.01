@@ -2,9 +2,6 @@
 #include "lecteur.h"
 #include "presentation.h"
 
-#include "image.h"
-#include "sousProgrammes.h"
-
 #include <QApplication>
 
 int main(int argc, char *argv[])

@@ -217,6 +217,21 @@ void Presentation::selectOwnSpeed() const
     }
 }
 
+void Presentation::editDefaultSpeed() const
+{
+
+}
+
+void Presentation::editImageCat() const
+{
+
+}
+
+void Presentation::editImageUri() const
+{
+
+}
+
 void Presentation::openHelpDialog() const
 {
     QMessageBox helpDialog;

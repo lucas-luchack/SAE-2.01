@@ -33,6 +33,9 @@ void LecteurVue::connect(QObject *c)
     QObject::connect(ui->actionCharger_les_diaporamas, SIGNAL(triggered()), c, SLOT(loadAllDiapo()));
     QObject::connect(ui->actionEnlever_les_diaporamas, SIGNAL(triggered()), c, SLOT(unloadDiapo()));
     QObject::connect(ui->actionA_propos, SIGNAL(triggered()), c, SLOT(openHelpDialog()));
+    QObject::connect(ui->actionChanger_Cat_image, SIGNAL(triggered()), c, SLOT(editImageCat()));
+    QObject::connect(ui->actionChanger_URI_image, SIGNAL(triggered()), c, SLOT(editImageUri()));
+    QObject::connect(ui->actionChanger_vitesse_default, SIGNAL(triggered()), c, SLOT(editDefaultSpeed()));
 
     QObject::connect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(close()));
 }
@@ -53,6 +56,9 @@ void LecteurVue::disconnect(QObject *c)
     QObject::disconnect(ui->actionCharger_les_diaporamas, SIGNAL(triggered()), c, SLOT(loadAllDiapo()));
     QObject::disconnect(ui->actionEnlever_les_diaporamas, SIGNAL(triggered()), c, SLOT(unloadDiapo()));
     QObject::disconnect(ui->actionA_propos, SIGNAL(triggered()), c, SLOT(openHelpDialog()));
+    QObject::disconnect(ui->actionChanger_Cat_image, SIGNAL(triggered()), c, SLOT(editImageCat()));
+    QObject::disconnect(ui->actionChanger_URI_image, SIGNAL(triggered()), c, SLOT(editImageUri()));
+    QObject::disconnect(ui->actionChanger_vitesse_default, SIGNAL(triggered()), c, SLOT(editDefaultSpeed()));
 
     QObject::disconnect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(close()));
 }

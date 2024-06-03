@@ -49,6 +49,10 @@ private slots:
     void select10SecSpeed() const;
     void selectOwnSpeed() const;
 
+    void editDefaultSpeed() const;
+    void editImageCat() const;
+    void editImageUri() const;
+
 };
 
 #endif // PRESENTATION_H

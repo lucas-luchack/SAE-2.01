@@ -5,7 +5,6 @@
 #include <QTimer>
 #include <QInputDialog>
 #include "selectionform.h"
-#include "sousProgrammes.h"
 
 Presentation::Presentation(QObject *parent)
     : QObject{parent}
@@ -99,17 +98,30 @@ void Presentation::loadAllDiapo() const
     {
         Images images;
 
-        this->db->importImages(images);
-        this->db->importDiapos(this->modele, images);
-
-        unsigned int taille_diaporamas = this->modele->getDiaporamasCount();
-
-        for (unsigned int posDiapo = 0; posDiapo < taille_diaporamas; posDiapo++)
-        {
-            this->modele->getDiaporamas()[posDiapo]->triCroissantRang();
+        bool ok = this->db->importImages(images);
+        if (ok) {
+            qDebug() << "test passed";
+            ok = this->db->importDiapos(this->modele, images);
         }
 
-        this->initialize();
+        if (ok) {
+            unsigned int taille_diaporamas = this->modele->getDiaporamasCount();
+
+            for (unsigned int posDiapo = 0; posDiapo < taille_diaporamas; posDiapo++)
+            {
+                this->modele->getDiaporamas()[posDiapo]->triCroissantRang();
+            }
+
+            this->initialize();
+        }
+        else
+        {
+            QMessageBox msgBox;
+            msgBox.setIcon(QMessageBox::Critical);
+            msgBox.setText("Impossible de charger les données.\nRéessayer plus tard !");
+            msgBox.setWindowTitle("Erreur de chargement");
+            msgBox.exec();
+        }
     }
 
 }

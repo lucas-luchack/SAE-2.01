@@ -16,8 +16,7 @@ SOURCES += \
     main.cpp \
     lecteurvue.cpp \
     presentation.cpp \
-    selectionform.cpp \
-    sousProgrammes.cpp
+    selectionform.cpp
 
 HEADERS += \
     database.h \
@@ -26,8 +25,7 @@ HEADERS += \
     lecteur.h \
     lecteurvue.h \
     presentation.h \
-    selectionform.h \
-    sousProgrammes.h
+    selectionform.h
 
 FORMS += \
     lecteurvue.ui \

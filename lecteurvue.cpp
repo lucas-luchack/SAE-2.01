@@ -1,6 +1,5 @@
 #include "lecteurvue.h"
 #include "ui_lecteurvue.h"
-#include "sousProgrammes.h"
 #include <iostream>
 #include <QDebug>
 #include <QPixmap>

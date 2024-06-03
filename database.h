@@ -22,7 +22,7 @@ public:
     bool importDiapos(Lecteur*, Images&) const;
 
     bool updateSpeed(unsigned int, unsigned int);
-    bool updateCheminImage(unsigned int, TypeModif, QString);
+    bool updateCheminImage(unsigned int, QString);
     bool updateCatImage(unsigned int, unsigned int);
 
     bool retrieveAllImagesCat(std::vector<QString>&, std::vector<unsigned int>&);

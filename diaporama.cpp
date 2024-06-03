@@ -5,8 +5,8 @@
 #include <vector>
 
 Diaporama::Diaporama(unsigned int id, QString titre, unsigned int vitesseDefilement):
-    id(id),
     titre(titre),
+    id(id),
     vitesseDefilement(vitesseDefilement),
     numImageCourante(0)
 {}

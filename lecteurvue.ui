@@ -61,7 +61,7 @@
         <item>
          <widget class="QLabel" name="image">
           <property name="text">
-           <string/>
+           <string>Aucune image</string>
           </property>
           <property name="pixmap">
            <pixmap>C:/DIAPO/img.png</pixmap>
@@ -230,7 +230,16 @@
     </property>
     <addaction name="actionA_propos"/>
    </widget>
+   <widget class="QMenu" name="menu_dition">
+    <property name="title">
+     <string>Édition</string>
+    </property>
+    <addaction name="actionChanger_URI_image"/>
+    <addaction name="actionChanger_Cat_image"/>
+    <addaction name="actionChanger_la_vitesse_par_d_faut_du_diaporama"/>
+   </widget>
    <addaction name="menuFichier"/>
+   <addaction name="menu_dition"/>
    <addaction name="menuDiaporama"/>
    <addaction name="menuAide"/>
   </widget>
@@ -294,6 +303,21 @@
   <action name="actionEnlever_les_diaporamas">
    <property name="text">
     <string>Enlever les diaporamas</string>
+   </property>
+  </action>
+  <action name="actionChanger_URI_image">
+   <property name="text">
+    <string>Changer l'URI de l'image</string>
+   </property>
+  </action>
+  <action name="actionChanger_Cat_image">
+   <property name="text">
+    <string>Changer la catégorie de l'image</string>
+   </property>
+  </action>
+  <action name="actionChanger_la_vitesse_par_d_faut_du_diaporama">
+   <property name="text">
+    <string>Changer la vitesse par défaut du diaporama</string>
    </property>
   </action>
  </widget>

@@ -45,7 +45,7 @@ bool Database::importImages(Images &imgs) const
 {
     if (this->db.isOpen())
     {
-        QSqlQuery query("SELECT i.idphoto, i.titrePhoto, f.nomFamille, i.uriPhoto FROM Diapos i JOIN Familles f ON f.idFamille = i.idFam ORDER BY idphoto;");
+        QSqlQuery query("SELECT i.idphoto, i.titrePhoto, f.nomFamille, i.uriPhoto FROM Diapos i JOIN Familles f ON f.idFamille = i.idFam ORDER BY i.idphoto");
         bool ok = query.exec();
 
         Image *imageACharger;
@@ -105,8 +105,8 @@ bool Database::updateSpeed(unsigned int id, unsigned int vitesse)
     {
         QSqlQuery query;
         query.prepare("UPDATE Diaporamas SET vitesseDefilement = :speed WHERE idDiaporama = :id");
-        query.bindValue('speed', vitesse);
-        query.bindValue('id', id);
+        query.bindValue(":speed", vitesse);
+        query.bindValue(":id", id);
 
         if (query.exec())
         {
@@ -123,11 +123,50 @@ bool Database::updateCheminImage(unsigned int id, QString uri)
     {
         QSqlQuery query;
         query.prepare("UPDATE Diapos SET uriPhoto = :text WHERE idphoto = :id");
-        query.bindValue('id', id);
-        query.bindValue('text', uri);
+        query.bindValue(":id", id);
+        query.bindValue(":text", uri);
 
         if (query.exec())
         {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool Database::updateCatImage(unsigned int idImg, unsigned int idCat)
+{
+    if (this->db.isOpen())
+    {
+        QSqlQuery query;
+        query.prepare("UPDATE Diapos SET idFam = :idC WHERE idphoto = :idP");
+        query.bindValue(":idP", idImg);
+        query.bindValue(":idC", idCat);
+
+        if (query.exec())
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool Database::retrieveAllImagesCat(std::vector<QString> &name, std::vector<unsigned int> &id)
+{
+    if (this->db.isOpen())
+    {
+        QSqlQuery query("SELECT * FROM DiaposDansDiaporama");
+
+        if (query.exec())
+        {
+            for (unsigned int i = 0; query.next(); i++)
+            {
+                name.push_back(query.value(1).toString());
+                id.push_back(query.value(0).toUInt());
+            }
+
             return true;
         }
     }

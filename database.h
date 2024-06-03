@@ -10,7 +10,7 @@
 class Lecteur;
 class Database
 {
-enum ModeModif { categorieImg, cheminImg };
+enum TypeModif { categorieImg, cheminImg };
 
 public:
     Database();
@@ -18,11 +18,14 @@ public:
     bool openDatabase();
     void closeDatabase();
 
-    void importImages(Images&) const;
-    void importDiapos(Lecteur*, Images&) const;
+    bool importImages(Images&) const;
+    bool importDiapos(Lecteur*, Images&) const;
 
-    void updateSpeed(unsigned int, unsigned int);
-    void updateImage(unsigned int, ModeModif, QString);
+    bool updateSpeed(unsigned int, unsigned int);
+    bool updateCheminImage(unsigned int, TypeModif, QString);
+    bool updateCatImage(unsigned int, unsigned int);
+
+    bool retrieveAllImagesCat(std::vector<QString>&, std::vector<unsigned int>&);
 
     bool isOpen() const;
 

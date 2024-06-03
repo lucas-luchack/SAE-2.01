@@ -41,7 +41,7 @@ void Database::closeDatabase()
     this->db.close();
 }
 
-void Database::importImages(Images &imgs) const
+bool Database::importImages(Images &imgs) const
 {
     if (this->db.isOpen())
     {
@@ -57,11 +57,15 @@ void Database::importImages(Images &imgs) const
                 imageACharger = new Image(query.value(0).toUInt(), query.value(1).toString(), query.value(2).toString(), query.value(3).toString());
                 imgs.push_back(imageACharger);
             }
+
+            return true;
         }
     }
+
+    return false;
 }
 
-void Database::importDiapos(Lecteur *l, Images &imgs) const
+bool Database::importDiapos(Lecteur *l, Images &imgs) const
 {
     if (this->db.isOpen())
     {
@@ -87,21 +91,48 @@ void Database::importDiapos(Lecteur *l, Images &imgs) const
 
                 l->chargerDiaporama(diaporama);
             }
+
+            return true;
         }
     }
+
+    return false;
 }
 
-void Database::updateSpeed(unsigned int id, unsigned int vitesse)
+bool Database::updateSpeed(unsigned int id, unsigned int vitesse)
 {
     if (this->db.isOpen())
     {
+        QSqlQuery query;
+        query.prepare("UPDATE Diaporamas SET vitesseDefilement = :speed WHERE idDiaporama = :id");
+        query.bindValue('speed', vitesse);
+        query.bindValue('id', id);
 
+        if (query.exec())
+        {
+            return true;
+        }
     }
+
+    return false;
 }
 
-void Database::updateImage(unsigned int, ModeModif, QString)
+bool Database::updateCheminImage(unsigned int id, QString uri)
 {
+    if (this->db.isOpen())
+    {
+        QSqlQuery query;
+        query.prepare("UPDATE Diapos SET uriPhoto = :text WHERE idphoto = :id");
+        query.bindValue('id', id);
+        query.bindValue('text', uri);
 
+        if (query.exec())
+        {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 bool Database::isOpen() const

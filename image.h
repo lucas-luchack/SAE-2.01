@@ -14,10 +14,12 @@ public:
     Image(unsigned int, QString = "", QString = "", QString = "");
     ~Image();
 
+    unsigned int getId() const;
     QString getTitre() const;
     QString getCategorie() const;
     QString getChemin() const;
 
+    void setId(unsigned int);
     void setTitre(QString);
     void setCategorie(QString);
     void setChemin(QString);

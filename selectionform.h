@@ -13,11 +13,13 @@ class SelectionForm : public QDialog
     Q_OBJECT
 
 public:
-    explicit SelectionForm(QWidget *parent = nullptr);
+    explicit SelectionForm(QString title, QWidget *parent = nullptr);
     ~SelectionForm();
 
-    void setDiaporamaList(Diaporamas);
-    int getSelectedDiaporama() const;
+    void setList(Diaporamas);
+    void setList(std::vector<QString>);
+
+    int getSelected() const;
 
 private:
     Ui::SelectionForm *ui;

@@ -76,7 +76,7 @@ void LecteurVue::updateImage(QString name, QString categorie, int current, QStri
     this->ui->currentImage->setText(QString::number(current));
     this->ui->imageName->setText(name);
     this->ui->imageCat->setText(categorie);
-    this->ui->image->setPixmap(QPixmap(location));
+    this->ui->image->setPixmap(QPixmap("C:\\" + location));
     this->ui->diapoProgress->setValue(current);
 }
 

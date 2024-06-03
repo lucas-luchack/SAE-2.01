@@ -79,7 +79,7 @@ bool Database::importDiapos(Lecteur *l, Images &imgs) const
         {
             for (unsigned int i = 0; query.next(); i++)
             {
-                diaporama = new Diaporama(query.value(0).toUInt(), query.value(1).toString(), static_cast<unsigned int>(query.value(2).toInt() * 1000));
+                diaporama = new Diaporama(query.value(0).toUInt(), query.value(1).toString(), query.value(2).toUInt() * 1000);
 
                 QSqlQuery query2;
                 query2.prepare("SELECT * FROM DiaposDansDiaporama WHERE idDiaporama = :id");
@@ -159,7 +159,8 @@ bool Database::retrieveAllImagesCat(std::vector<QString> &name, std::vector<unsi
 {
     if (this->db.isOpen())
     {
-        QSqlQuery query("SELECT * FROM DiaposDansDiaporama");
+        QSqlQuery query;
+        query.prepare("SELECT * FROM Familles ORDER BY idFamille");
 
         if (query.exec())
         {

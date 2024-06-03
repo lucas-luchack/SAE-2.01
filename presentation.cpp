@@ -78,13 +78,13 @@ void Presentation::unloadDiapo() const
 
 void Presentation::loadDiapo() const
 {
-    SelectionForm selectionDialog;
-    selectionDialog.setDiaporamaList(this->modele->getDiaporamas());
+    SelectionForm selectionDialog("Selectionnez un diaporama", this->vue);
+    selectionDialog.setList(this->modele->getDiaporamas());
     int result = selectionDialog.exec();
 
     if (result == QDialog::Accepted && this->modele->getDiaporamasCount() != 0)
     {
-        int selected = selectionDialog.getSelectedDiaporama();
+        int selected = selectionDialog.getSelected();
         this->modele->changerDiaporama(selected);
         this->timer->stop();
         this->updateDiaporama();
@@ -127,7 +127,8 @@ void Presentation::loadAllDiapo() const
 
 void Presentation::changeMode() const
 {
-    if (this->modele->getDiaporamasCount() != 0) {
+    if (this->modele->getDiaporamasCount() != 0)
+    {
         if (this->modele->getMode() == ModeLecteur::automatique)
         {
             this->modele->setMode(manuel);
@@ -145,7 +146,8 @@ void Presentation::changeMode() const
 
 void Presentation::changeModeToAuto(bool checked) const
 {
-    if (this->modele->getDiaporamasCount() != 0) {
+    if (this->modele->getDiaporamasCount() != 0)
+    {
         if (checked && this->modele->getMode() != automatique)
         {
             this->modele->setMode(automatique);
@@ -163,7 +165,8 @@ void Presentation::changeModeToAuto(bool checked) const
 
 void Presentation::changeModeToManuel(bool checked) const
 {
-    if (this->modele->getDiaporamasCount() != 0) {
+    if (this->modele->getDiaporamasCount() != 0)
+    {
         if (checked && this->modele->getMode() != manuel)
         {
             this->modele->setMode(manuel);
@@ -181,7 +184,8 @@ void Presentation::changeModeToManuel(bool checked) const
 
 void Presentation::select1SecSpeed() const
 {
-    if (this->modele->getDiaporamasCount() != 0) {
+    if (this->modele->getDiaporamasCount() != 0)
+    {
         this->modele->getCurrentDiaporama()->setVitesseDefilement(1000);
         this->resetTimerSpeed();
     }
@@ -189,7 +193,8 @@ void Presentation::select1SecSpeed() const
 
 void Presentation::select5SecSpeed() const
 {
-    if (this->modele->getDiaporamasCount() != 0) {
+    if (this->modele->getDiaporamasCount() != 0)
+    {
         this->modele->getCurrentDiaporama()->setVitesseDefilement(5000);
         this->resetTimerSpeed();
     }
@@ -197,7 +202,8 @@ void Presentation::select5SecSpeed() const
 
 void Presentation::select10SecSpeed() const
 {
-    if (this->modele->getDiaporamasCount() != 0) {
+    if (this->modele->getDiaporamasCount() != 0)
+    {
         this->modele->getCurrentDiaporama()->setVitesseDefilement(10000);
         this->resetTimerSpeed();
     }
@@ -205,7 +211,8 @@ void Presentation::select10SecSpeed() const
 
 void Presentation::selectOwnSpeed() const
 {
-    if (this->modele->getDiaporamasCount() != 0) {
+    if (this->modele->getDiaporamasCount() != 0)
+    {
         bool ok = false;
         double result = QInputDialog::getDouble(this->vue, "Vitesse de défilement", "Entrez la vitesse de défilement en secondes", 1, 0, 50000, 1, &ok);
 
@@ -219,17 +226,111 @@ void Presentation::selectOwnSpeed() const
 
 void Presentation::editDefaultSpeed() const
 {
+    if (this->modele->getDiaporamasCount() != 0)
+    {
+        bool ok = false;
+        double result = QInputDialog::getDouble(this->vue, "Vitesse de défilement", "Entrez la vitesse de défilement en secondes", 1, 0, 50000, 1, &ok);
 
+        if (ok)
+        {
+            bool ok = this->db->updateSpeed(this->modele->getCurrentDiaporama()->getId(), result);
+            this->modele->getCurrentDiaporama()->setVitesseDefilement(result*1000);
+
+            QMessageBox message;
+            if (ok)
+            {
+                message.setWindowTitle("Information");
+                message.setIcon(QMessageBox::Information);
+                message.setText("Modification effectuée");
+                message.exec();
+            }
+            else
+            {
+                message.setWindowTitle("Erreur");
+                message.setIcon(QMessageBox::Critical);
+                message.setText("Une erreur est survenue pendant la modification");
+                message.exec();
+            }
+        }
+    }
 }
 
 void Presentation::editImageCat() const
 {
+    if (this->modele->getDiaporamasCount() != 0)
+    {
+        SelectionForm selectionDialog("Selectionnez une catégorie", this->vue);
 
+        std::vector<QString> namesCat;
+        std::vector<unsigned int> idCat;
+        QMessageBox message;
+        bool ok = this->db->retrieveAllImagesCat(namesCat, idCat);
+
+        if (!ok)
+        {
+            message.setWindowTitle("Erreur");
+            message.setIcon(QMessageBox::Critical);
+            message.setText("Une erreur est survenue pendant la modification");
+            message.exec();
+            return;
+        }
+
+        selectionDialog.setList(namesCat);
+        int result = selectionDialog.exec();
+
+        if (result == QDialog::Accepted)
+        {
+            int selected = selectionDialog.getSelected() + 1;
+            bool ok = this->db->updateCatImage(this->modele->getCurrentDiaporama()->getImage().image->getId(), selected);
+            this->modele->getCurrentDiaporama()->getImage().image->setCategorie(namesCat[selected]);
+
+            if (ok)
+            {
+                message.setWindowTitle("Information");
+                message.setIcon(QMessageBox::Information);
+                message.setText("Modification effectuée");
+                message.exec();
+            }
+            else
+            {
+                message.setWindowTitle("Erreur");
+                message.setIcon(QMessageBox::Critical);
+                message.setText("Une erreur est survenue pendant la modification");
+                message.exec();
+            }
+        }
+    }
 }
 
 void Presentation::editImageUri() const
 {
+    if (this->modele->getDiaporamasCount() != 0)
+    {
+        bool ok = false;
+        QString result = QInputDialog::getText(this->vue, "Vitesse de défilement", "Entrez la vitesse de défilement en secondes", QLineEdit::Normal, this->modele->getCurrentDiaporama()->getImage().image->getChemin(), &ok);
 
+        if (ok)
+        {
+            this->modele->getCurrentDiaporama()->getImage().image->setChemin(result);
+            bool ok = this->db->updateCheminImage(this->modele->getCurrentDiaporama()->getImage().image->getId(), result);
+
+            QMessageBox message;
+            if (ok)
+            {
+                message.setWindowTitle("Information");
+                message.setIcon(QMessageBox::Information);
+                message.setText("Modification effectuée");
+                message.exec();
+            }
+            else
+            {
+                message.setWindowTitle("Erreur");
+                message.setIcon(QMessageBox::Critical);
+                message.setText("Une erreur est survenue pendant la modification");
+                message.exec();
+            }
+        }
+    }
 }
 
 void Presentation::openHelpDialog() const

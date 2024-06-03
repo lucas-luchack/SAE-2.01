@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 
     w.connect(p);
 
-    w.setWindowTitle("Lecteur de diaporama - V5 (MVP)");
+    w.setWindowTitle("Lecteur de diaporama - V8 (MVP)");
     w.setWindowIcon(QIcon(":/icon"));
 
     w.show();

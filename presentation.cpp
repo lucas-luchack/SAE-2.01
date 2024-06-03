@@ -212,7 +212,7 @@ void Presentation::openHelpDialog() const
 {
     QMessageBox helpDialog;
     helpDialog.setText("Ce lecteur de diaporama à été réalisé dans le cadre de la SAE 2.02 par trois étudiants de l'IUT de Bayonne et du Pays Basque (département Informatique) :\n\n- ESPIET Lucas\n- RIVRAIS-NOWAKOWSKI Mathis\n- HOARAU Allan");
-    helpDialog.setInformativeText("Lecteur de Diaporama / SAE 2.02 / V5-MVP");
+    helpDialog.setInformativeText("Lecteur de Diaporama / SAE 2.02 / V8-MVP");
     helpDialog.setIcon(QMessageBox::Information);
     helpDialog.exec();
 }

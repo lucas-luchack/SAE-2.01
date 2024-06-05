@@ -52,6 +52,7 @@ void Lecteur::removeAllDiapo()
 
     while(!this->diaporamas.empty())
     {
+        qDebug() << "Deleted";
         diapo = this->diaporamas.back();
         deletedImages = diapo->removeAllImages(deletedImages);
         this->diaporamas.pop_back();

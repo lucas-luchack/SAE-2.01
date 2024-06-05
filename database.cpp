@@ -88,7 +88,7 @@ bool Database::importDiapos(Lecteur *l, Images &imgs) const
 
                 for (unsigned int i = 0; query2.next(); i++)
                 {
-                    diaporama->ajouterImage(imgs[query2.value(0).toInt()], query2.value(2).toInt());
+                    diaporama->ajouterImage(imgs[(query2.value(0).toInt())-1], query2.value(2).toInt());
                 }
 
                 l->chargerDiaporama(diaporama);

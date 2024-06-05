@@ -98,7 +98,7 @@ void LecteurVue::resetInterface() const
     this->ui->imageCat->setText("Aucune Catégorie");
     this->ui->currentImage->setText("XX");
     this->ui->totalImages->setText("XX");
-    this->ui->image->setText("");
+    this->ui->image->setText("Aucune image");
     this->ui->modeBtn->setText("Démarrer/Arrêter");
 }
 

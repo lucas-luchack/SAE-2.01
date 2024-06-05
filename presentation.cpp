@@ -86,7 +86,7 @@ void Presentation::loadDiapo() const
     {
         int selected = selectionDialog.getSelected();
         this->modele->changerDiaporama(selected);
-        this->timer->stop();
+        this->changeModeToManuel(true);
         this->updateDiaporama();
     }
 }

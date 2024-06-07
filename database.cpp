@@ -32,6 +32,7 @@ bool Database::openDatabase()
         else
         {
             qDebug() << "There was an error while opening the DB!" << Qt::endl << "See logs for more informations";
+            qDebug() << this->db.lastError().text();
             return false;
         }
     }

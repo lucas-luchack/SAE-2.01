@@ -12,6 +12,12 @@ Database::Database()
 
 }
 
+/**
+ * Ouvre la base de données
+ *
+ * @brief Database::openDatabase
+ * @return Base de données correctement ouverte ou non
+ */
 bool Database::openDatabase()
 {
     if (this->db.isOpen())
@@ -38,11 +44,23 @@ bool Database::openDatabase()
     }
 }
 
+/**
+ * Ferme la base de données
+ *
+ * @brief Database::closeDatabase
+ */
 void Database::closeDatabase()
 {
     this->db.close();
 }
 
+/**
+ * Importation des images depuis la base de données vers le lecteur de diaporama
+ *
+ * @brief Database::importImages
+ * @param imgs Stack d'images
+ * @return Si oui ou non les images sont correctements importées
+ */
 bool Database::importImages(Images &imgs) const
 {
     if (this->db.isOpen())
@@ -66,6 +84,14 @@ bool Database::importImages(Images &imgs) const
     return false;
 }
 
+/**
+ * Importe les diaporamas depuis la base de données vers le lecteur de diaporama
+ *
+ * @brief Database::importDiapos
+ * @param l - Pointeur vers le lecteur
+ * @param imgs - Liste des images importées
+ * @return Si oui ou non les diaporamas sont correctement importés
+ */
 bool Database::importDiapos(Lecteur *l, Images &imgs) const
 {
     if (this->db.isOpen())
@@ -102,6 +128,14 @@ bool Database::importDiapos(Lecteur *l, Images &imgs) const
     return false;
 }
 
+/**
+ * Met à jour la vitesse par défaut du diaporama dans la BDD
+ *
+ * @brief Database::updateSpeed
+ * @param id Id du diaporama a modifier
+ * @param vitesse Nouvelle vitesse du diaporama
+ * @return Si oui ou non la modification a bien été appliquée
+ */
 bool Database::updateSpeed(unsigned int id, unsigned int vitesse)
 {
     if (this->db.isOpen())
@@ -120,6 +154,14 @@ bool Database::updateSpeed(unsigned int id, unsigned int vitesse)
     return false;
 }
 
+/**
+ * Met à jour l'URI de l'image dans la BDD
+ *
+ * @brief Database::updateCheminImage
+ * @param id Id de l'image à modifier
+ * @param uri Nouvelle URI de l'image
+ * @return Si oui ou non la modification a bien été appliquée
+ */
 bool Database::updateCheminImage(unsigned int id, QString uri)
 {
     if (this->db.isOpen())
@@ -138,6 +180,14 @@ bool Database::updateCheminImage(unsigned int id, QString uri)
     return false;
 }
 
+/**
+ * Met à jour la catégorie de l'image dans la BDD
+ *
+ * @brief Database::updateCatImage
+ * @param idImg ID de l'image
+ * @param idCat ID de la nouvelle catégorie de l'image
+ * @return Si oui ou non la modification a bien été appliquée
+ */
 bool Database::updateCatImage(unsigned int idImg, unsigned int idCat)
 {
     if (this->db.isOpen())
@@ -156,6 +206,12 @@ bool Database::updateCatImage(unsigned int idImg, unsigned int idCat)
     return false;
 }
 
+/**
+ * @brief Database::retrieveAllImagesCat
+ * @param name Stack de tout les noms
+ * @param id Stack de tout les id
+ * @return Si oui ou non la récupération s'est bien passée
+ */
 bool Database::retrieveAllImagesCat(std::vector<QString> &name, std::vector<unsigned int> &id)
 {
     if (this->db.isOpen())

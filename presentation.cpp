@@ -229,7 +229,7 @@ void Presentation::editDefaultSpeed() const
     if (this->modele->getDiaporamasCount() != 0)
     {
         bool ok = false;
-        double result = QInputDialog::getDouble(this->vue, "Vitesse de défilement", "Entrez la vitesse de défilement en secondes", 1, 0, 50000, 1, &ok);
+        unsigned int result = QInputDialog::getInt(this->vue, "Vitesse de défilement", "Entrez la vitesse de défilement en secondes", 1, 0, 50000, 1, &ok);
 
         if (ok)
         {

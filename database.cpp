@@ -8,9 +8,7 @@
 #include "lecteur.h"
 
 Database::Database()
-{
-
-}
+{}
 
 /**
  * Ouvre la base de données
@@ -207,6 +205,8 @@ bool Database::updateCatImage(unsigned int idImg, unsigned int idCat)
 }
 
 /**
+ * Récupère la liste des catégories d'images
+ *
  * @brief Database::retrieveAllImagesCat
  * @param name Stack de tout les noms
  * @param id Stack de tout les id
@@ -234,6 +234,12 @@ bool Database::retrieveAllImagesCat(std::vector<QString> &name, std::vector<unsi
     return false;
 }
 
+/**
+ * Permet de vérifier si la BDD est ouverte
+ *
+ * @brief Database::isOpen
+ * @return Oui ou non la BDD est ouverte
+ */
 bool Database::isOpen() const
 {
     return this->db.isOpen();

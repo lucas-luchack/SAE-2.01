@@ -12,9 +12,7 @@ Diaporama::Diaporama(unsigned int id, QString titre, unsigned int vitesseDefilem
 {}
 
 Diaporama::~Diaporama()
-{
-
-}
+{}
 
 QString Diaporama::getTitre() const
 {
